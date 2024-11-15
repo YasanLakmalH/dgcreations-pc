@@ -1,0 +1,106 @@
+import { DesignState, Measurements, Customer, Product, StepState} from '@/types/types';
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
+
+export const useStore = create<DesignState>()(
+  persist(
+    (set) => ({
+      design: {
+        measurements: {
+          width: 0,
+          height: 0,
+          depth: 0,
+        },
+        layout: '',
+        style: '',
+        color: '',
+        material: '',
+        addon: [],
+        additionalNotes: '',
+        installation: {
+          customerDetails: {
+            name: '',
+            email: '',
+            phone: '',
+            location: '',
+          },
+          preferredDate: '',
+        },
+      },
+      setMeasurements: (measurements: Measurements) => set((state) => ({
+        design: {
+          ...state.design,
+          measurements,
+        },
+      })),
+      setLayout: (layout: string) => set((state) => ({
+        design: {
+          ...state.design,
+          layout,
+        },
+      })),
+      setStyle: (style: string) => set((state) => ({
+        design: {
+          ...state.design,
+          style,
+        },
+      })),
+      setColorPalette: (color: string) => set((state) => ({
+        design: {
+          ...state.design,
+          color,
+        },
+      })),
+      setMaterial: (material: string) => set((state) => ({
+        design: {
+          ...state.design,
+          material,
+        },
+      })),
+      setCustomerDetails: (details: Customer) => set((state) => ({
+        design: {
+          ...state.design,
+          installation: {
+            ...state.design.installation,
+            customerDetails: details,
+          },
+        },
+      })),
+      setPreferredDate: (date: string) => set((state) => ({
+        design: {
+          ...state.design,
+          installation: {
+            ...state.design.installation,
+            preferredDate: date,
+          },
+        },
+      })),
+    setAdditionalNotes: (note: string) => set((state) => ({
+      design: {
+        ...state.design,
+        additionalNotes: note,
+      },
+    })),
+    setAddon: (items: Product[]) => set((state) => ({
+      design: {
+        ...state.design,
+        addon: [...state.design.addon, ...items],
+      },
+    })),
+  }),
+  { name: 'store-storage' }
+));
+
+
+export const useStep = create<StepState>()(
+  persist(
+    (set) => ({
+      currentStep: 0,
+      goToNextStep: () => set((state) => ({ currentStep: state.currentStep + 1 })),
+      goToPreviousStep: () => set((state) => ({ currentStep: state.currentStep - 1 })),
+      reset: () => set({ currentStep: 0 })
+    }),
+    
+    { name: 'step-storage' }
+  )
+);
