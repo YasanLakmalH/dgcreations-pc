@@ -1,0 +1,86 @@
+"use client"
+
+import { useEffect, useState } from "react"
+import { Card, CardContent } from "@/components/ui/card"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { motion, AnimatePresence } from "framer-motion"
+
+const testimonials = [
+  {
+    id: 1,
+    name: "Sarah Johnson",
+    role: "Interior Designer",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
+    content: "The quality and craftsmanship of LuxeCraft's furniture is unmatched. My clients are always impressed with the results.",
+  },
+  {
+    id: 2,
+    name: "Michael Chen",
+    role: "Homeowner",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
+    content: "Their pantry design transformed my kitchen. The attention to detail and functionality is exceptional.",
+  },
+  {
+    id: 3,
+    name: "Emma Davis",
+    role: "Architect",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
+    content: "Working with LuxeCraft has been a pleasure. Their innovative designs and professional service are outstanding.",
+  },
+]
+
+export default function Testimonials() {
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [])
+
+  return (
+    <section className="py-16 bg-muted/30">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold text-center mb-12">What Our Clients Say</h2>
+        <div className="relative h-[300px]">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="absolute inset-0"
+            >
+              <Card className="h-full">
+                <CardContent className="flex flex-col items-center justify-center h-full p-8 text-center">
+                  <Avatar className="w-20 h-20 mb-6">
+                    <AvatarImage src={testimonials[currentIndex].image} alt={testimonials[currentIndex].name} />
+                    <AvatarFallback>{testimonials[currentIndex].name[0]}</AvatarFallback>
+                  </Avatar>
+                  <p className="text-lg mb-4 italic">{testimonials[currentIndex].content}</p>
+                  <div>
+                    <h4 className="font-semibold">{testimonials[currentIndex].name}</h4>
+                    <p className="text-sm text-muted-foreground">{testimonials[currentIndex].role}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </AnimatePresence>
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                className={`w-2 h-2 rounded-full transition-colors duration-300 ${
+                  index === currentIndex ? "bg-primary" : "bg-muted-foreground/30"
+                }`}
+                onClick={() => setCurrentIndex(index)}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
