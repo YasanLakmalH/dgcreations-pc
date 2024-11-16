@@ -9,7 +9,7 @@ import { Toaster } from '@/components/ui/toaster';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'LuxeCraft Interiors | Premium Furniture & Pantry Design',
+  title: 'DG Creations',
   description: 'Discover our premium collection of bespoke furniture and pantry designs.',
 };
 

@@ -12,18 +12,19 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const { theme, setTheme } = useTheme()
 
-  useEffect(() => {
+ useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0)
     }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  }, []) 
 
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/products", label: "Products" },
     { href: "/collection", label: "Collection" },
+    { href: "/design/steps/measurements", label: "Design" },
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
   ]
