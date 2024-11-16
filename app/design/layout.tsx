@@ -97,7 +97,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 animate-fade-in p-8">
+    <div className="bg-white rounded-lg shadow-sm border border-gray-200 animate-fade-in p-8 mt-16">
       <StepIndicator steps={stepsList} currentStep={currentStep} />
 
       {error && (
