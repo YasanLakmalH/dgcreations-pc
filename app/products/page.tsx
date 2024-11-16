@@ -65,7 +65,7 @@ const products = [
 ]
 
 const categories = ["All", "Living Room", "Dining Room", "Kitchen", "Office", "Bedroom"]
-const sortOptions = ["Price: Low to High", "Price: High to Low", "Name: A to Z", "Name: Z to A"]
+const sortOptions = ["Name: A to Z", "Name: Z to A"]
 
 export default function Products() {
   const [selectedCategory, setSelectedCategory] = useState("All")
@@ -75,10 +75,6 @@ export default function Products() {
     .filter((product) => selectedCategory === "All" || product.category === selectedCategory)
     .sort((a, b) => {
       switch (sortBy) {
-        case "Price: Low to High":
-          return parseInt(a.price.replace(/\D/g, "")) - parseInt(b.price.replace(/\D/g, ""))
-        case "Price: High to Low":
-          return parseInt(b.price.replace(/\D/g, "")) - parseInt(a.price.replace(/\D/g, ""))
         case "Name: A to Z":
           return a.name.localeCompare(b.name)
         case "Name: Z to A":
