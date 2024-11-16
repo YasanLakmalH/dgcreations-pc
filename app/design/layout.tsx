@@ -22,7 +22,7 @@ const stepsList: Step[] = [
   { id: 2, title: 'Layout', icon: LayoutGrid, path: '/design/steps/layout' },
   { id: 3, title: 'Style', icon: Palette, path: '/design/steps/style' },
   { id: 4, title: 'Material', icon: Layers, path: '/design/steps/material' },
-  { id: 5, title: 'Storage', icon: Package, path: '/design/steps/storage' },
+  { id: 5, title: 'Storage', icon: Package, path: '/design/steps/addOn' },
   { id: 6, title: 'Review', icon: ClipboardCheck, path: '/design/steps/review' },
   { id: 7, title: 'Installation', icon: Calendar, path: '/design/steps/installation' },
   { id: 8, title: 'Finalize', icon: Save, path: '/design/steps/finalize' },
