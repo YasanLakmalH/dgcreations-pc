@@ -130,7 +130,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             className={`px-6 py-2 rounded-md transition-all duration-200 transform hover:scale-105 ${
               currentStep === stepsList.length
                 ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                : 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm hover:shadow animate-pulse'
+                : 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm'
             }`}
           >
             {currentStep === stepsList.length - 1 ? 'Finish' : 'Next'}
