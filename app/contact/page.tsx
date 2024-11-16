@@ -53,6 +53,7 @@ export default function Contact() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
+              className="flex flex-col justify-between"
             >
               <h2 className="text-2xl font-bold mb-6">Get in Touch</h2>
               <div className="space-y-6">
@@ -84,15 +85,30 @@ export default function Contact() {
                   </div>
                 </div>
               </div>
+              {/* Google Map Embed */}
+              <div className="mt-8">
+                <div className="w-full relative" style={{ height: '250px' }}>
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d3961.249510278371!2d79.9641272!3d6.8606716!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNsKwNTEnNDIuOCJOIDc5wrA1Nyc1Mi45IkU!5e0!3m2!1sen!2slk!4v1731743074490!5m2!1sen!2slk"
+                    width="80%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </div>
+              </div>
             </motion.div>
 
-            {/* Contact Form */}
+            {/* Inquiry Form */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
+              className="flex flex-col justify-between"
             >
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <h2 className="text-2xl font-bold mb-4">Submit Inquiry</h2>
+              <form onSubmit={handleSubmit} className="space-y-11">
                 <div>
                   <Input
                     placeholder="Your Name"
@@ -101,6 +117,7 @@ export default function Contact() {
                       setFormData({ ...formData, name: e.target.value })
                     }
                     required
+                    className="h-12 text-lg" // Uniform height for input
                   />
                 </div>
                 <div>
@@ -112,6 +129,7 @@ export default function Contact() {
                       setFormData({ ...formData, email: e.target.value })
                     }
                     required
+                    className="h-12 text-lg" // Uniform height for input
                   />
                 </div>
                 <div>
@@ -122,6 +140,7 @@ export default function Contact() {
                       setFormData({ ...formData, subject: e.target.value })
                     }
                     required
+                    className="h-12 text-lg" // Uniform height for input
                   />
                 </div>
                 <div>
@@ -132,10 +151,10 @@ export default function Contact() {
                       setFormData({ ...formData, message: e.target.value })
                     }
                     required
-                    className="min-h-[150px]"
+                    className="min-h-[150px] text-lg h-32" // Consistent height for textarea
                   />
                 </div>
-                <Button type="submit" size="lg" className="w-full">
+                <Button type="submit" size="lg" className="h-12 w-full text-lg">
                   Send Message
                 </Button>
               </form>
