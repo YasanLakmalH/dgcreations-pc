@@ -16,7 +16,7 @@ interface Props {
 
 export default function StepIndicator({ steps, currentStep }: Props) {
   return (
-    <div className="hidden md:flex justify-between items-center w-full">
+    <div className="hidden md:flex justify-center items-center w-full px-32">
       {steps.map((step, index) => {
         const Icon = step.icon;
         const isActive = step.id === currentStep;
@@ -26,7 +26,7 @@ export default function StepIndicator({ steps, currentStep }: Props) {
           <React.Fragment key={step.id}>
             <div className="flex flex-col items-center">
               <div
-                className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${
+                className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
                   isActive
                     ? 'bg-indigo-600 text-white'
                     : isCompleted

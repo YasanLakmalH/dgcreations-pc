@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useStep, useStore } from '@/store/useStore';
 import StepIndicator from '../../../components/StepIndicator';
-import { Step } from '@/types/types';
+import { Customer, Step } from '@/types/types';
 import {
   AlertCircle,
   Ruler,
@@ -22,9 +22,9 @@ const stepsList: Step[] = [
   { id: 2, title: 'Layout', icon: LayoutGrid, path: '/design/steps/layout' },
   { id: 3, title: 'Style', icon: Palette, path: '/design/steps/style' },
   { id: 4, title: 'Material', icon: Layers, path: '/design/steps/material' },
-  { id: 5, title: 'Storage', icon: Package, path: '/design/steps/addOn' },
+  { id: 5, title: 'Add On', icon: Package, path: '/design/steps/addOn' },
   { id: 6, title: 'Review', icon: ClipboardCheck, path: '/design/steps/review' },
-  { id: 7, title: 'Installation', icon: Calendar, path: '/design/steps/installation' },
+  { id: 7, title: 'contact', icon: Calendar, path: '/design/steps/contact' },
   { id: 8, title: 'Finalize', icon: Save, path: '/design/steps/finalize' },
 ];
 
@@ -53,8 +53,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         }
         break;
       case 3:
-        if (!design.style || !design.color) {
-          setError('Please select both style and color palette');
+        if (!design.style) {
+          setError('Please select style');
           return false;
         }
         break;
@@ -71,9 +71,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         }
         break;
       case 7:
-        const { name, email } = design.installation.customerDetails;
-        const { preferredDate } = design.installation;
-        if (!name || !email || !preferredDate || !email.includes('@')) {
+        const { name, email } = design.customerDetails ?? {};
+        
+        if (!name || !email || !email.includes('@')) {
           setError('Please complete all required installation details with a valid email');
           return false;
         }
@@ -107,11 +107,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </div>
       )}
 
-      <div className="px-4 py-6 sm:px-6 transition-all duration-300 animate-fade-in">
+      <div className="px-4 py-11 sm:px-6 transition-all duration-300 animate-fade-in">
         {children}
       </div>
 
-      <div className="px-4 py-4 sm:px-6 border-t border-gray-200 bg-gray-50">
+      <div className="px-4 sm:px-6">
         <div className="flex justify-between">
           <button
             onClick={handlePrevious}

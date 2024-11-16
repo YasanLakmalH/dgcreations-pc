@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { ClipboardCheck, MessageSquare } from 'lucide-react';
 import { Measurements, Product } from '@/types/types';
@@ -29,8 +30,6 @@ export default function Page() {
         return `${measurements.width}" × ${measurements.height}" × ${measurements.depth}"`;
     };
 
-    const selectedPalette = colorPalettes[design.color as keyof typeof colorPalettes];
-
     return (
         <div className="space-y-6 animate-fade-in">
             <div className="flex items-center space-x-3 text-2xl text-gray-800 mb-6">
@@ -50,24 +49,6 @@ export default function Page() {
                         <p className="text-gray-600 capitalize">{design.layout?.replace('-', ' ')}</p>
                     </div>
 
-                    <div className="bg-gray-50 p-4 rounded-lg transform hover:scale-105 transition-transform">
-                        <h4 className="font-medium text-gray-900 mb-2">Style & Colors</h4>
-                        <p className="text-gray-600 capitalize mb-3">{design.style?.replace('-', ' ')}</p>
-                        {selectedPalette && (
-                            <div>
-                                <p className="text-gray-600 mb-2">{selectedPalette.name}</p>
-                                <div className="flex space-x-2">
-                                    {selectedPalette.colors.map((color, index) => (
-                                        <div
-                                            key={index}
-                                            className="w-8 h-8 rounded-full border border-gray-200"
-                                            style={{ backgroundColor: color }}
-                                        />
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-                    </div>
                 </div>
 
                 <div className="space-y-6">
@@ -79,8 +60,8 @@ export default function Page() {
                     <div className="bg-gray-50 p-4 rounded-lg transform hover:scale-105 transition-transform">
                         <h4 className="font-medium text-gray-900 mb-2">Storage Solutions</h4>
                         <ul className="list-disc list-inside text-gray-600">
-                            {design.addon?.map((item: Product) => (
-                                <li key={item.id} className="capitalize">{item.name}</li>
+                            {design.addon?.map((item: string) => (
+                                <li key={item} className="capitalize">{item}</li>
                             ))}
                         </ul>
                     </div>

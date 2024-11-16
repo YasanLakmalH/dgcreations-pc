@@ -6,11 +6,13 @@ export type Step = {
     icon: LucideIcon;
     path:string;
   }
-export type Customer = {
-    name:string;
-    email:string;
-    phone:string;
-    location:string;
+  interface Customer {
+    name?: string;
+    email?: string;
+    phone?: string;
+    address?: string;
+    location?: string;
+    areaImgs?: string[];
 }
 
 export type Measurements = {
@@ -26,14 +28,11 @@ export interface Design {
     measurements: Measurements;
     layout: string;   
     style: string;    
-    color: string;   
     material: string; 
-    addon: Product[];
+    addon: string[];
     additionalNotes: string;
-    installation: {
-        customerDetails: Customer;
-        preferredDate: string;
-    };
+    customerDetails: Customer;
+    
 }
 export interface DesignState{
     design:Design;
@@ -43,9 +42,9 @@ export interface DesignState{
     setColorPalette:(color:string) => void;
     setMaterial:(material:string) => void;
     setCustomerDetails:(details:Customer) => void;
-    setPreferredDate:(date:string) => void;
     setAdditionalNotes:(note:string) => void;
-    setAddon:(items:Product[]) => void;
+    setAddon:(item:string) => void;
+    reset:(design:Design) => void;
 }
 export interface StepState{
     currentStep:number;

@@ -13,19 +13,17 @@ export const useStore = create<DesignState>()(
         },
         layout: '',
         style: '',
-        color: '',
         material: '',
         addon: [],
         additionalNotes: '',
-        installation: {
-          customerDetails: {
+        customerDetails: {
             name: '',
             email: '',
             phone: '',
             location: '',
-          },
-          preferredDate: '',
-        },
+            areaImgs:[]
+          }       
+        
       },
       setMeasurements: (measurements: Measurements) => set((state) => ({
         design: {
@@ -66,22 +64,14 @@ export const useStore = create<DesignState>()(
           },
         },
       })),
-      setPreferredDate: (date: string) => set((state) => ({
-        design: {
-          ...state.design,
-          installation: {
-            ...state.design.installation,
-            preferredDate: date,
-          },
-        },
-      })),
+    
     setAdditionalNotes: (note: string) => set((state) => ({
       design: {
         ...state.design,
         additionalNotes: note,
       },
     })),
-    setAddon: (items: Product[]) => set((state) => ({
+    setAddon: (items: string[]) => set((state) => ({
       design: {
         ...state.design,
         addon: [...state.design.addon, ...items],
