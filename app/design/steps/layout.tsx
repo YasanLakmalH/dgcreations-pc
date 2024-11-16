@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useStep, useStore } from '@/store/useStore';
-import StepIndicator from './StepIndicator';
+import StepIndicator from '../../../components/StepIndicator';
 import { Step } from '@/types/types';
 import {
   AlertCircle,
