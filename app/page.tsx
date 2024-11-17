@@ -59,23 +59,13 @@ const featuredProducts = [
 ]
 
 export default function Home() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
 
-  useEffect(() => {
-    if (emblaApi) {
-      const interval = setInterval(() => {
-        emblaApi.scrollNext()
-      }, 5000)
-
-      return () => clearInterval(interval)
-    }
-  }, [emblaApi])
 
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
       <section className="relative h-screen">
-        <div className="overflow-hidden h-full" ref={emblaRef}>
+        <div className="overflow-hidden h-full">
           <div className="flex h-full">
             {heroSlides.map((slide, index) => (
               <div key={index} className="relative h-full flex-[0_0_100%]">
@@ -110,7 +100,7 @@ export default function Home() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.4 }}
                     >
-                      <Link href="/collection">
+                      <Link href="/gallery">
                         <Button size="lg" className="mt-4">
                           Explore Collection
                         </Button>
@@ -172,17 +162,14 @@ export default function Home() {
               {
                 title: "Premium Quality",
                 description: "Handcrafted with the finest materials for lasting beauty",
-                icon: "✨",
               },
               {
                 title: "Custom Design",
                 description: "Tailored solutions to match your unique style and space",
-                icon: "🎨",
               },
               {
                 title: "Expert Installation",
                 description: "Professional installation by our skilled craftsmen",
-                icon: "🛠️",
               },
             ].map((feature, index) => (
               <motion.div
@@ -193,7 +180,6 @@ export default function Home() {
                 viewport={{ once: true }}
                 className="text-center p-6 hover:bg-muted/50 rounded-lg transition-colors duration-300"
               >
-                <span className="text-4xl mb-4 block">{feature.icon}</span>
                 <h3 className="text-xl font-semibold mb-4">{feature.title}</h3>
                 <p className="text-muted-foreground">{feature.description}</p>
               </motion.div>
