@@ -67,14 +67,12 @@ export default function Home() {
       <section className="relative h-screen">
         <div className="overflow-hidden h-full">
           <div className="flex h-full">
-            {heroSlides.map((slide, index) => (
-              <div key={index} className="relative h-full flex-[0_0_100%]">
+              <div className="relative h-full flex-[0_0_100%]">
                 <Image
-                  src={slide.image}
-                  alt={slide.title}
+                  src={heroSlides[2].image}
+                  alt={heroSlides[2].title}
                   fill
                   className="object-cover"
-                  priority={index === 0}
                 />
                 <div className="absolute inset-0 bg-black/40" />
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -85,7 +83,7 @@ export default function Home() {
                       transition={{ duration: 0.6 }}
                       className="text-4xl md:text-6xl font-bold"
                     >
-                      {slide.title}
+                      {heroSlides[2].title}
                     </motion.h1>
                     <motion.p
                       initial={{ opacity: 0, y: 20 }}
@@ -93,7 +91,7 @@ export default function Home() {
                       transition={{ duration: 0.6, delay: 0.2 }}
                       className="text-lg md:text-xl"
                     >
-                      {slide.description}
+                      {heroSlides[2].description}
                     </motion.p>
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
@@ -109,7 +107,6 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            ))}
           </div>
         </div>
       </section>
