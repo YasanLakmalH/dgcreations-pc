@@ -6,8 +6,6 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Mail, Phone, MapPin } from 'lucide-react';
-import axios from 'axios';
-import { Email } from '@/types/types';
 import { sendEmailFromClient } from '@/mailService';
 
 export default function Contact() {
@@ -18,52 +16,6 @@ export default function Contact() {
     subject:'',
     message: '',
   });
-
-
-const sendEmailWithAPI = async (data:Email) => {
-      const { name, email, subject, message } = data;
-  
-      if (!process.env.SERVICE_ID || !process.env.TEMPLATE_ID || !process.env.USER_ID) {
-          throw new Error('Email configuration is missing');
-      }
-  
-      const url = `https://api.emailjs.com/api/v1.0/email/send`;
-  
-      const payload = {
-          service_id: process.env.SERVICE_ID,
-          template_id: process.env.TEMPLATE_ID,
-          user_id: process.env.USER_ID,
-          template_params: {
-              from_name: name,
-              from_email: email,
-              subject: subject,
-              message: message,
-          },
-      };
-  
-      try {
-          const response = await axios.post(url, payload);
-          console.log('Email sent successfully:', response.data);
-      } catch (error) {
-          console.error('Error sending email:', error);
-          throw new Error('Failed to send email');
-      }
-  };
-  
-  const sendEmail = async () => {
-    try {
-      await axios.post('/api/email', formData);
-      toast({
-        title: 'Message Sent',
-        description: "We'll get back to you as soon as possible.",
-      });
-    } catch (error) {
-      toast({
-        title: 'Error',
-        description: 'There was an issue sending your message. Please try again later.',
-      });
-    }
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

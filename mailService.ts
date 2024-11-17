@@ -4,25 +4,19 @@ import emailjs from '@emailjs/browser';
 import { Email } from './types/types';
 
 emailjs.init({
-    publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '',
+    publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_ID,
     blockHeadless: true,
     blockList: {
-      list: [],
+        list: [],
     },
     limitRate: {
-      throttle: 1000, // 1s
+        throttle: 10000,
     },
-  });
-if( !process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ){
-    console.log("key is missing")
-}
+});
+
 export const sendEmailFromClient = async (data: Email) => {
     const { name, email, subject, message } = data;
 
-    if (!process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || !process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || !process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY) {
-        throw new Error('Email configuration is missing');
-    }
-    
     const templateParams = {
         from_name: name,
         from_email: email,
@@ -32,21 +26,21 @@ export const sendEmailFromClient = async (data: Email) => {
 
     try {
         const response = await emailjs
-        .send(
-          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '', 
-          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '', 
-          templateParams, 
-          { publicKey: process.env.NEXT_EMAILJS_PUBLIC_PUBLIC_KEY || '' }
-        )
-        .then(
-          (response) => {
-            console.log('SUCCESS!', response.status, response.text);
-          },
-          (err) => {
-            console.log('FAILED...', err);
-          },
-        );
-      
+            .send(
+                process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
+                process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string,
+                templateParams,
+                { publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_ID }
+            )
+            .then(
+                (response) => {
+                    console.log('SUCCESS!', response.status, response.text);
+                },
+                (err) => {
+                    console.log('FAILED...', err);
+                },
+            );
+
         console.log('Email sent successfully:', response);
     } catch (error) {
         console.error('Error sending email:', error);
