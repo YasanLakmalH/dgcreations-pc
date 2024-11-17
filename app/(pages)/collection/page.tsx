@@ -11,42 +11,36 @@ const products = [
     id: 1,
     name: "Modern Pantry System",
     image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea",
-    price: "$2,499",
     category: "Pantry",
   },
   {
     id: 2,
     name: "Elegant Dining Set",
     image: "https://images.unsplash.com/photo-1617806118233-18e1de247200",
-    price: "$1,899",
     category: "Furniture",
   },
   {
     id: 3,
     name: "Storage Solutions",
     image: "https://images.unsplash.com/photo-1595514535215-8a5b64b2b681",
-    price: "$999",
     category: "Pantry",
   },
   {
     id: 4,
     name: "Luxury Sofa",
     image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc",
-    price: "$3,299",
     category: "Furniture",
   },
   {
     id: 5,
     name: "Kitchen Cabinet System",
     image: "https://images.unsplash.com/photo-1556911220-bff31c812dba",
-    price: "$4,599",
     category: "Pantry",
   },
   {
     id: 6,
     name: "Modern Bedroom Set",
     image: "https://images.unsplash.com/photo-1505693314120-0d443867891c",
-    price: "$5,999",
     category: "Furniture",
   },
 ]
@@ -110,10 +104,6 @@ export default function Collection() {
                   <div className="p-4">
                     <h3 className="text-lg font-semibold">{product.name}</h3>
                     <p className="text-muted-foreground">{product.category}</p>
-                    <div className="flex justify-between items-center mt-2">
-                      <span className="font-bold">{product.price}</span>
-                      <Button variant="outline" size="sm">View Details</Button>
-                    </div>
                   </div>
                 </CardContent>
               </Card>
