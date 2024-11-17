@@ -39,21 +39,18 @@ const featuredProducts = [
     id: 1,
     name: "Modern Pantry System",
     image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea",
-    price: "$2,499",
     category: "Pantry",
   },
   {
     id: 2,
     name: "Elegant Dining Set",
     image: "https://images.unsplash.com/photo-1617806118233-18e1de247200",
-    price: "$1,899",
     category: "Furniture",
   },
   {
     id: 3,
     name: "Storage Solutions",
     image: "https://images.unsplash.com/photo-1595514535215-8a5b64b2b681",
-    price: "$999",
     category: "Pantry",
   },
 ]
@@ -137,10 +134,6 @@ export default function Home() {
                     <div className="p-4">
                       <h3 className="text-lg font-semibold">{product.name}</h3>
                       <p className="text-muted-foreground">{product.category}</p>
-                      <div className="flex justify-between items-center mt-2">
-                        <span className="font-bold">{product.price}</span>
-                        <Button variant="outline" size="sm">View Details</Button>
-                      </div>
                     </div>
                   </CardContent>
                 </Card>
