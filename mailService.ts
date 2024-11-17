@@ -51,3 +51,41 @@ export const sendEmailFromClient = async (data: Email) => {
         }
     }
 };
+
+export const sendDesignEmailFromClient = async (data: Email) => {
+    const { name, email, subject, message } = data;
+
+    const templateParams = {
+        from_name: name,
+        from_email: email,
+        subject: subject,
+        message: message,
+    };
+
+    try {
+        const response = await emailjs
+            .send(
+                process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
+                process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string,
+                templateParams,
+                { publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_ID }
+            )
+            .then(
+                (response) => {
+                    console.log('SUCCESS!', response.status, response.text);
+                },
+                (err) => {
+                    console.log('FAILED...', err);
+                },
+            );
+
+        console.log('Email sent successfully:', response);
+    } catch (error) {
+        console.error('Error sending email:', error);
+        if (error instanceof Error) {
+            throw new Error('Failed to send email: ' + error.message);
+        } else {
+            throw new Error('Failed to send email');
+        }
+    }
+};
