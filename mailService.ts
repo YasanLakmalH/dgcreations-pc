@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 import emailjs from '@emailjs/browser';
-import { Email } from './types/types';
+import { Email, OrderEmail } from './types/types';
 
 emailjs.init({
     publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_ID,
@@ -52,14 +52,14 @@ export const sendEmailFromClient = async (data: Email) => {
     }
 };
 
-export const sendDesignEmailFromClient = async (data: Email) => {
-    const { name, email, subject, message } = data;
+export const sendOrderEmailFromClient = async (data: OrderEmail) => {
+    const { orderId, customerName, customerPhone } = data;
 
     const templateParams = {
-        from_name: name,
-        from_email: email,
-        subject: subject,
-        message: message,
+        order_id: orderId,
+        from_name: customerName,
+        customer_name: customerName,
+        customer_phone: customerPhone,
     };
 
     try {

@@ -68,12 +68,15 @@ export const useStore = create<DesignState>()(
         additionalNotes: note,
       },
     })),
-    setAddon: (items: string[]) => set((state) => ({
+    setAddon: (item: string) => set((state) => ({
       design: {
-        ...state.design,
-        addon: [...state.design.addon, ...items],
-      },
-    })),
+        ...state.design, // Spread the rest of the design object
+        addon: state.design.addon.includes(item)
+          ? state.design.addon.filter((addonItem) => addonItem !== item)  // Remove the item if it already exists
+          : [...state.design.addon, item]  // Add the item if it doesn't exist
+      }
+    }))
+    
   }),
   { name: 'store-storage' }
 ));

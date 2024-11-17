@@ -1,44 +1,6 @@
 'use client'
-import axios from 'axios';
 import React from 'react';
 import { useStore } from '@/store/useStore';
-import { Design } from '@/types/types';
-
-// Example usage:
-const designDetails = {
-  measurements: {
-    width:10,
-    height:10,
-    depth:10
-  },
-    layout: "layout 1", 
-    style: "style 1",   
-    material: "Wood",
-    addon: ["desk","chair"],
-    additionalNotes: "dfaf",
-    customerDetails: {
-      name: "jhone",
-      email: "Jhon@gmail.com",
-      phone: "123456789",
-      address: "address",
-      location: "location",
-      areaImgs: ["img1","img2"]
-    }
-};
-
-const postDesignDetails = async (details:Design) => {
-  try {
-    const response = await axios.post('/api/design', details);
-    console.log('Design details posted successfully:', response.data);
-  } catch (error) {
-    console.error('Error posting design details:', error);
-  }
-};
-
-postDesignDetails(designDetails);
-
-
-
 
 export default function Page() {
     const {design} = useStore();

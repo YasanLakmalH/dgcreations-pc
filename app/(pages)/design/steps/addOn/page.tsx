@@ -63,12 +63,17 @@ export default function Page() {
                 : 'bg-white hover:bg-gray-50'
             }`}
             onClick={() => {
-              if (addOnList.includes(option.id)) {
-                setAddOnList(addOnList.filter(id => id !== option.id));
-              } else {
-                setAddOnList([...addOnList, option.id]);
-              }
+              setAddOnList((prevList) => {
+                if (prevList.includes(option.id)) {
+                  // Remove the option id if it's already in the list
+                  return prevList.filter((id) => id !== option.id);
+                } else {
+                  // Add the option id if it's not in the list
+                  return [...prevList, option.id];
+                }
+              });
             }}
+            
           >
             <div className="flex items-start space-x-4">
               <div className="flex-1">

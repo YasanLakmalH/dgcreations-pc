@@ -13,6 +13,12 @@ export type Email = {
     subject: string;
     message: string;
 }
+export type OrderEmail ={
+    orderId: string,
+    fromName: string,
+    customerName: string,
+    customerPhone: string,
+}
 export interface Customer {
     name?: string;
     email?: string;
@@ -51,7 +57,6 @@ export interface DesignState {
     setCustomerDetails: (details: Customer) => void;
     setAdditionalNotes: (note: string) => void;
     setAddon: (item: string) => void;
-    reset: (design: Design) => void;
 }
 export interface StepState {
     currentStep: number;
@@ -59,3 +64,17 @@ export interface StepState {
     goToPreviousStep: (currentStep: number) => void;
     reset: () => void;
 }
+
+export type OrderType = {
+    orderId: string;
+    measurements:Measurements;
+    layout:string;
+    style:string;
+    color:string;
+    material:string;
+    addOn:string[];
+    additionalNotes:string;
+    customer:Customer;
+    createdAt: string;
+  }
+  

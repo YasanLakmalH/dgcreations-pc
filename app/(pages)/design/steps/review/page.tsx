@@ -3,25 +3,21 @@ import React from 'react';
 import { ClipboardCheck, MessageSquare } from 'lucide-react';
 import { Measurements, Product } from '@/types/types';
 import { useStore } from '@/store/useStore';
+import { OrderType } from '@/types/types';
+import axios from 'axios';
+import { sendOrderEmailFromClient } from '@/mailService';
 
-const colorPalettes = {
-    'neutral': {
-        name: 'Neutral Elegance',
-        colors: ['#F5F5F5', '#E0E0E0', '#9E9E9E', '#616161']
-    },
-    'warm': {
-        name: 'Warm Natural',
-        colors: ['#FDFBF3', '#E6D5AC', '#C8B6A6', '#8B7355']
-    },
-    'modern-dark': {
-        name: 'Modern Dark',
-        colors: ['#263238', '#455A64', '#78909C', '#CFD8DC']
-    },
-    'coastal': {
-        name: 'Coastal Fresh',
-        colors: ['#FFFFFF', '#E3F2FD', '#90CAF9', '#2196F3']
+const submitOrder = async (details:OrderType) => {
+    try {
+      const response = await axios.post('/api/order', details);
+
+    //   sendOrderEmailFromClient(details)
+      console.log('Design details posted successfully:', response.data);
+    } catch (error) {
+      console.error('Error posting design details:', error);
     }
-};
+  };
+  
 
 export default function Page() {
     const {design} = useStore();
@@ -29,7 +25,8 @@ export default function Page() {
     const formatMeasurements = (measurements: Measurements) => {
         return `${measurements.width}" × ${measurements.height}" × ${measurements.depth}"`;
     };
-
+console.log(design.addon);
+   
     return (
         <div className="space-y-6 animate-fade-in">
             <div className="flex items-center space-x-3 text-2xl text-gray-800 mb-6">
