@@ -3,39 +3,38 @@
 import React, { useState } from 'react';
 import { useStore } from '@/store/useStore';
 
-
-
 export default function Page() {
     const { design } = useStore();
     const setCustomerDetails = useStore((state) => state.setCustomerDetails);
 
-    // State for each field
-    const [name, setName] = useState(design.customerDetails?.name || '');
-    const [email, setEmail] = useState(design.customerDetails?.email || '');
-    const [phone, setPhone] = useState(design.customerDetails?.phone || '');
-    const [address, setAddress] = useState(design.customerDetails?.address || '');
-    const [photo, setPhoto] = useState<File | null>(null);
+    // State for the entire customer form
+    const [customerDetails, setCustomerDetailsState] = useState({
+        name: design.customerDetails?.name || '',
+        email: design.customerDetails?.email || '',
+        phone: design.customerDetails?.phone || '',
+        address: design.customerDetails?.address || '',
+        photo: null as File | null,
+    });
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setCustomerDetailsState((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const selectedFile = e.target.files ? e.target.files[0] : null;
-        if (selectedFile) {
-            setPhoto(selectedFile);
-        }
+        setCustomerDetailsState((prev) => ({
+            ...prev,
+            photo: selectedFile,
+        }));
     };
 
     const handleSubmit = () => {
         // Handle submit logic, e.g., update global state or send to server
-        const updatedCustomerDetails = {
-            name,
-            email,
-            phone,
-            address,
-            photo, // You can send photo or its URL to the backend
-            location: design.customerDetails?.location || '',
-            areaImgs: design.customerDetails?.areaImgs || [],
-        };
-
-        setCustomerDetails(updatedCustomerDetails);  // Store updated details
+        setCustomerDetails(customerDetails);
     };
 
     return (
@@ -49,8 +48,8 @@ export default function Page() {
                         <input
                             type="text"
                             name="name"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
+                            value={customerDetails.name}
+                            onChange={handleInputChange}
                             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                             placeholder="Enter your full name"
                         />
@@ -62,8 +61,8 @@ export default function Page() {
                         <input
                             type="email"
                             name="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            value={customerDetails.email}
+                            onChange={handleInputChange}
                             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                             placeholder="Enter your email"
                         />
@@ -75,8 +74,8 @@ export default function Page() {
                         <input
                             type="tel"
                             name="phone"
-                            value={phone}
-                            onChange={(e) => setPhone(e.target.value)}
+                            value={customerDetails.phone}
+                            onChange={handleInputChange}
                             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                             placeholder="Enter your phone number"
                         />
@@ -88,8 +87,8 @@ export default function Page() {
                         <input
                             type="text"
                             name="address"
-                            value={address}
-                            onChange={(e) => setAddress(e.target.value)}
+                            value={customerDetails.address}
+                            onChange={handleInputChange}
                             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                             placeholder="25/2 Baker St. UK"
                         />
@@ -116,7 +115,7 @@ export default function Page() {
                             </label>
                             <input
                                 type="file"
-                                name="imgs"
+                                name="photo"
                                 onChange={handleFileChange}
                                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                             />
@@ -126,9 +125,9 @@ export default function Page() {
             </div>
 
             {/* Optional: Display the selected file */}
-            {photo && (
+            {customerDetails.photo && (
                 <div className="mt-4">
-                    <p className="text-sm font-medium text-gray-700">Selected File: {photo.name}</p>
+                    <p className="text-sm font-medium text-gray-700">Selected File: {customerDetails.photo.name}</p>
                 </div>
             )}
 

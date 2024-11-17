@@ -55,13 +55,10 @@ export const useStore = create<DesignState>()(
           material,
         },
       })),
-      setCustomerDetails: (details: Customer) => set((state) => ({
+      setCustomerDetails: (customerDetails: Customer) => set((state) => ({
         design: {
           ...state.design,
-          installation: {
-            ...state.design.installation,
-            customerDetails: details,
-          },
+            customerDetails
         },
       })),
     

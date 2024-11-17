@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useStep, useStore } from '@/store/useStore';
-import StepIndicator from '../../../components/StepIndicator';
-import { Customer, Step } from '@/types/types';
+import StepIndicator from '../../../../components/StepIndicator';
+import { Step } from '@/types/types';
 import {
   AlertCircle,
   Ruler,
@@ -71,9 +71,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         }
         break;
       case 7:
-        const { name, email } = design.customerDetails ?? {};
-        
-        if (!name || !email || !email.includes('@')) {
+        const name = design.customerDetails?.name;
+        if (!name) {
           setError('Please complete all required installation details with a valid email');
           return false;
         }

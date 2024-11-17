@@ -1,8 +1,43 @@
 'use client'
-
+import axios from 'axios';
 import React from 'react';
-import { Save } from 'lucide-react';
 import { useStore } from '@/store/useStore';
+import { Design } from '@/types/types';
+
+// Example usage:
+const designDetails = {
+  measurements: {
+    width:10,
+    height:10,
+    depth:10
+  },
+    layout: "layout 1", 
+    style: "style 1",   
+    material: "Wood",
+    addon: ["desk","chair"],
+    additionalNotes: "dfaf",
+    customerDetails: {
+      name: "jhone",
+      email: "Jhon@gmail.com",
+      phone: "123456789",
+      address: "address",
+      location: "location",
+      areaImgs: ["img1","img2"]
+    }
+};
+
+const postDesignDetails = async (details:Design) => {
+  try {
+    const response = await axios.post('/api/design', details);
+    console.log('Design details posted successfully:', response.data);
+  } catch (error) {
+    console.error('Error posting design details:', error);
+  }
+};
+
+postDesignDetails(designDetails);
+
+
 
 
 export default function Page() {
@@ -10,11 +45,6 @@ export default function Page() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center space-x-3 text-2xl text-gray-800 mb-6">
-        <Save className="w-8 h-8 text-indigo-600" />
-        <h3 className="font-semibold">Save Your Design</h3>
-      </div>
-
       <div className="bg-green-50 p-6 rounded-lg mb-8">
         <h4 className="text-lg font-medium text-green-900 mb-2">
           Design Complete!
@@ -51,21 +81,18 @@ export default function Page() {
         <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
           <h4 className="font-medium text-gray-900 mb-4">Installation Details</h4>
           <div className="space-y-3 text-gray-600">
-            <p>
-              <strong>Date:</strong>{' '}
-              {new Date(design.installation?.preferredDate).toLocaleDateString()}
-            </p>
+            
             <p>
               <strong>Contact:</strong>{' '}
-              {design.installation?.customerDetails?.name}
+              {design.customerDetails?.name}
             </p>
             <p>
               <strong>Email:</strong>{' '}
-              {design.installation?.customerDetails?.email}
+              {design.customerDetails?.email}
             </p>
             <p>
               <strong>Phone:</strong>{' '}
-              {design.installation?.customerDetails?.phone}
+              {design.customerDetails?.phone}
             </p>
           </div>
         </div>
