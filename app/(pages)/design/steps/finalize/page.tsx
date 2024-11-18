@@ -1,12 +1,25 @@
 'use client'
 import React from 'react';
-import { useStore } from '@/store/useStore';
+import { useStep, useStore } from '@/store/useStore';
+import { useRouter } from 'next/navigation';
 
 export default function Page() {
-    const {design} = useStore();
+    const {design,} = useStore();
+    const clearDesign = useStore((state) => state.reset);
+    const resetStep = useStep((state) => state.reset);
+    const router = useRouter();
+
+  const handleGoHome = () => {
+    clearDesign(); 
+    resetStep();
+    router.push('/');
+  };
 
   return (
     <div className="space-y-6">
+       <div className='flex justify-center w-full'>
+      <h1 className='text-3xl font-bold text-green-500'>Thank You For Your Order!</h1>
+      </div>
       <div className="bg-green-50 p-6 rounded-lg mb-8">
         <h4 className="text-lg font-medium text-green-900 mb-2">
           Design Complete!
@@ -16,7 +29,12 @@ export default function Page() {
           and contact you within 24 hours to discuss the next steps.
         </p>
       </div>
-
+      <div className='flex justify-center w-full'>
+      <a href='/'> <button
+       className=' mt-6 px-4 py-4 bg-indigo-600 text-white rounded-md hover:bg-indigo-700' 
+        onClick={handleGoHome}
+       >Go To Home</button></a>
+      </div>
       <div className="grid md:grid-cols-2 gap-6">
         <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
           <h4 className="font-medium text-gray-900 mb-4">Whats Next?</h4>

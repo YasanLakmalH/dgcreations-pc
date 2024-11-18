@@ -38,19 +38,19 @@ const featuredProducts = [
   {
     id: 1,
     name: "Modern Pantry System",
-    image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea",
+    image: "",
     category: "Pantry",
   },
   {
     id: 2,
     name: "Elegant Dining Set",
-    image: "https://images.unsplash.com/photo-1617806118233-18e1de247200",
+    image: "",
     category: "Furniture",
   },
   {
     id: 3,
     name: "Storage Solutions",
-    image: "https://images.unsplash.com/photo-1595514535215-8a5b64b2b681",
+    image: "",
     category: "Pantry",
   },
 ]
@@ -97,7 +97,7 @@ export default function Home() {
                     >
                       <Link href="/gallery">
                         <Button size="lg" className="mt-4">
-                          Explore Collection
+                          Explore Our Works
                         </Button>
                       </Link>
                     </motion.div>

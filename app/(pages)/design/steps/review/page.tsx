@@ -3,10 +3,6 @@ import React from 'react';
 import { ClipboardCheck, MessageSquare } from 'lucide-react';
 import { Measurements, Product } from '@/types/types';
 import { useStore } from '@/store/useStore';
-import { OrderType } from '@/types/types';
-import axios from 'axios';
-import { sendOrderEmailFromClient } from '@/mailService';
-
 
 
 export default function Page() {

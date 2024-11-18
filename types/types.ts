@@ -57,6 +57,7 @@ export interface DesignState {
     setCustomerDetails: (details: Customer) => void;
     setAdditionalNotes: (note: string) => void;
     setAddon: (item: string) => void;
+    reset: () => void;
 }
 export interface StepState {
     currentStep: number;

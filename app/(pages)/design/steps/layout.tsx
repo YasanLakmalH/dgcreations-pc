@@ -115,11 +115,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <button
             onClick={handlePrevious}
             disabled={currentStep === 1}
-            className={`px-4 py-2 rounded-md transition-all duration-200 transform hover:scale-105 ${
+            className={`px-4 py-2 rounded-md transition-all duration-200 transform hover:scale-105
+               bg-white text-gray-700 hover:bg-gray-50 border border-gray-300 hover:shadow-sm ${
               currentStep === 1
                 ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-300 hover:shadow-sm'
-            }`}
+                : currentStep === stepsList.length ? 'hidden': 'block'} }
+                `}
           >
             Previous
           </button>
@@ -128,11 +129,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             disabled={currentStep === stepsList.length}
             className={`px-6 py-2 rounded-md transition-all duration-200 transform hover:scale-105 ${
               currentStep === stepsList.length
-                ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                ? 'hidden'
                 : 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm'
             }`}
           >
             {currentStep === stepsList.length - 1 ? 'Finish' : 'Next'}
+            {currentStep}
           </button>
         </div>
       </div>

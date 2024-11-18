@@ -10,37 +10,37 @@ const products = [
   {
     id: 1,
     name: "Modern Pantry System",
-    image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea",
+    image: "",
     category: "Pantry",
   },
   {
     id: 2,
     name: "Elegant Dining Set",
-    image: "https://images.unsplash.com/photo-1617806118233-18e1de247200",
+    image: "",
     category: "Furniture",
   },
   {
     id: 3,
     name: "Storage Solutions",
-    image: "https://images.unsplash.com/photo-1595514535215-8a5b64b2b681",
+    image: "",
     category: "Pantry",
   },
   {
     id: 4,
     name: "Luxury Sofa",
-    image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc",
+    image: "",
     category: "Furniture",
   },
   {
     id: 5,
     name: "Kitchen Cabinet System",
-    image: "https://images.unsplash.com/photo-1556911220-bff31c812dba",
+    image: "",
     category: "Pantry",
   },
   {
     id: 6,
     name: "Modern Bedroom Set",
-    image: "https://images.unsplash.com/photo-1505693314120-0d443867891c",
+    image: "",
     category: "Furniture",
   },
 ]

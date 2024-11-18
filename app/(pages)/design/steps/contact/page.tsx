@@ -1,6 +1,5 @@
-'use client'
-
-import React, { useState } from 'react';
+'use client';
+import React, { useState, useEffect } from 'react';
 import { useStore } from '@/store/useStore';
 import axios from 'axios';
 import { Design, OrderType } from '@/types/types';
@@ -18,6 +17,19 @@ export default function Page() {
         photo: design.customerDetails?.areaImgs || null
     });
 
+    // Update state when design.customerDetails changes
+    useEffect(() => {
+        if (design.customerDetails) {
+            setCustomerDetailsState({
+                name: design.customerDetails.name || '',
+                email: design.customerDetails.email || '',
+                phone: design.customerDetails.phone || '',
+                address: design.customerDetails.address || '',
+                photo: design.customerDetails.areaImgs || null
+            });
+        }
+    }, [design.customerDetails]);
+
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setCustomerDetailsState((prev) => ({
@@ -34,7 +46,7 @@ export default function Page() {
         }));
     };
 
-    const submitOrder = async (details: Design,) => {
+    const submitOrder = async (details: Design) => {
         try {
             const response = await axios.post('/api/order', details);
 
@@ -45,10 +57,21 @@ export default function Page() {
     };
 
     const handleSubmit = () => {
-        setCustomerDetails(customerDetails);
-        submitOrder(design);
-    };
+        // Debugging: Log the customer details before saving them
+        console.log('Customer details before submission:', customerDetails);
 
+        // Check if any required fields are empty before submitting
+        if (!customerDetails.name || !customerDetails.phone || !customerDetails.address) {
+            console.error('Required fields are missing!');
+            return;
+        }
+
+        setCustomerDetails(customerDetails);
+        submitOrder({
+            ...design,
+            customerDetails: customerDetails
+        });
+    };
 
     return (
         <div className="space-y-6">

@@ -75,7 +75,28 @@ export const useStore = create<DesignState>()(
           ? state.design.addon.filter((addonItem) => addonItem !== item)  // Remove the item if it already exists
           : [...state.design.addon, item]  // Add the item if it doesn't exist
       }
-    }))
+    })),
+    reset: () => set({
+      design: {
+        measurements: {
+          width: 0,
+          height: 0,
+          depth: 0,
+        },
+        layout: '',
+        style: '',
+        material: '',
+        addon: [],
+        additionalNotes: '',
+        customerDetails: {
+          name: '',
+          email: '',
+          phone: '',
+          location: '',
+          areaImgs: undefined
+        }
+      }
+    }),
     
   }),
   { name: 'store-storage' }
@@ -85,7 +106,7 @@ export const useStore = create<DesignState>()(
 export const useStep = create<StepState>()(
   persist(
     (set) => ({
-      currentStep: 0,
+      currentStep: 1,
       goToNextStep: () => set((state) => ({ currentStep: state.currentStep + 1 })),
       goToPreviousStep: () => set((state) => ({ currentStep: state.currentStep - 1 })),
       reset: () => set({ currentStep: 0 })

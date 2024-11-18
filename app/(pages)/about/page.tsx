@@ -11,7 +11,7 @@ export default function About() {
       {/* Hero Section */}
       <section className="relative h-[60vh]">
         <Image
-          src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6"
+          src="/heroimgs/HeroImg1.webp"
           alt="About Us"
           fill
           className="object-cover"
@@ -67,7 +67,7 @@ export default function About() {
               className="relative h-[400px]"
             >
               <Image
-                src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace"
+                src="/heroimgs/HeroImg3.webp"
                 alt="Our Workshop"
                 fill
                 className="object-cover rounded-lg"
