@@ -70,10 +70,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           return false;
         }
         break;
-      case 7:
-        const name = design.customerDetails?.name;
-        if (!name) {
-          setError('Please complete all required installation details with a valid email');
+      case 7:;
+      const { name, email, phone, address, areaImgs } = design.customerDetails;
+        if (!name || !email || !phone || !address || !areaImgs) { 
+          setError('Please complete all required customer details');
           return false;
         }
         break;
@@ -128,13 +128,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             onClick={handleNext}
             disabled={currentStep === stepsList.length}
             className={`px-6 py-2 rounded-md transition-all duration-200 transform hover:scale-105 ${
-              currentStep === stepsList.length
+              currentStep === stepsList.length-1
                 ? 'hidden'
                 : 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm'
             }`}
           >
             {currentStep === stepsList.length - 1 ? 'Finish' : 'Next'}
-            {currentStep}
           </button>
         </div>
       </div>

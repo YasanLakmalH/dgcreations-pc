@@ -2,11 +2,19 @@
 import React, { useState, useEffect } from 'react';
 import { useStore } from '@/store/useStore';
 import axios from 'axios';
-import { Design, OrderType } from '@/types/types';
+import { Design} from '@/types/types';
+import { sendOrderEmailFromClient } from '@/mailService';
+import { AlertCircle } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { useStep } from '@/store/useStore';
 
 export default function Page() {
     const { design } = useStore();
     const setCustomerDetails = useStore((state) => state.setCustomerDetails);
+    const [error, setError] = useState('');
+    const router = useRouter();
+    const { currentStep } = useStep();
+    const goToNextStep = useStep((state) => state.goToNextStep);
 
     // State for the entire customer form
     const [customerDetails, setCustomerDetailsState] = useState({
@@ -49,21 +57,43 @@ export default function Page() {
     const submitOrder = async (details: Design) => {
         try {
             const response = await axios.post('/api/order', details);
-
-            console.log('Design details posted successfully:', response.data);
+            await sendOrderEmailFromClient({
+                orderId:response.data.orderId, 
+                fromName:response.data.design.customerDetails.name ?? '',
+                customerName:response.data.design.customerDetails.name ?? '',
+                customerPhone: response.data.design.design.customerDetails.phone ?? ''
+            });
         } catch (error) {
             console.error('Error posting design details:', error);
         }
     };
+    const validateForm = () => {
+        setError('');
+        if (!customerDetails.name) {
+            setError('Full Name is required');
+        }
+        if (customerDetails.email && !/\S+@\S+\.\S+/.test(customerDetails.email)) {
+            setError('Email is invalid');
+        }
+        if (!customerDetails.phone.trim()) {
+            setError('Phone number is required');
+        } else if (!/^\d{10}$/.test(customerDetails.phone)) {
+            setError('Phone number must be 10 digits');
+        }
+
+        if (!customerDetails.address.trim()) {
+            setError('Address is required');
+        }
+        if (!customerDetails.photo) {
+            setError('Photo is required');
+        }
+    };
 
     const handleSubmit = () => {
-        // Debugging: Log the customer details before saving them
-        console.log('Customer details before submission:', customerDetails);
-
-        // Check if any required fields are empty before submitting
-        if (!customerDetails.name || !customerDetails.phone || !customerDetails.address) {
-            console.error('Required fields are missing!');
-            return;
+        validateForm();
+        if (Object.keys(error).length > 0) {
+            console.log('Validation errors:', error);
+            return false;
         }
 
         setCustomerDetails(customerDetails);
@@ -71,10 +101,20 @@ export default function Page() {
             ...design,
             customerDetails: customerDetails
         });
+        goToNextStep(currentStep);  
+        router.push('/design/steps/finalize');
+
     };
+ 
 
     return (
         <div className="space-y-6">
+             {error && (
+        <div className="mx-4 mt-4 p-3 bg-red-50 border border-red-200 rounded-md flex items-center text-red-700 animate-shake">
+          <AlertCircle className="w-5 h-5 mr-2" />
+          {error}
+        </div>
+      )}
             <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-4">
                     <div>
@@ -166,10 +206,9 @@ export default function Page() {
                     <p className="text-sm font-medium text-gray-700">Selected File: {customerDetails.photo.name}</p>
                 </div>
             )}
-
             <button
                 onClick={handleSubmit}
-                className="mt-6 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
+                className="mt-6 px-4 py-2 text-white rounded-md bg-green-500 w-full hover:shadow-md"
             >
                 Submit
             </button>

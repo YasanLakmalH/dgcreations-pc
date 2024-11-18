@@ -12,6 +12,7 @@ export const POST = async (req: NextRequest) => {
             createdAt: new Date().toISOString(),
         };
         await createOrder(order);
+       
         return new NextResponse(JSON.stringify({message: 'Order created successfully', data:order}), {status: 200});
     } catch (error) {
         if (error instanceof Error) {

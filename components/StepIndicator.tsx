@@ -16,7 +16,7 @@ interface Props {
 
 export default function StepIndicator({ steps, currentStep }: Props) {
   return (
-    <div className="hidden md:flex justify-center items-center w-full px-32">
+    <div className="md:flex justify-center items-center w-full px-32">
       {steps.map((step, index) => {
         const Icon = step.icon;
         const isActive = step.id === currentStep;

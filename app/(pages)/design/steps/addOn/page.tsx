@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react';
-import { useStore } from '@/store/useStore';
-
+import { useStore,useStep } from '@/store/useStore';
+import { useRouter } from 'next/navigation';
 const storageOptions = [  
   {
     id: 'adjustable-shelves',
@@ -47,10 +47,17 @@ const storageOptions = [
 ];
 
 export default function Page() {
+  const { currentStep } = useStep();
+  const goToNextStep = useStep((state) => state.goToNextStep);
   const [addOnList, setAddOnList] = React.useState<string[]>([]);
-  const {design} = useStore();
   const setAddOn = useStore((state) => state.setAddon);
+  const router = useRouter();
 
+const confirmAddons = () => { 
+  addOnList.forEach((addOn) => setAddOn(addOn));
+  goToNextStep(currentStep);
+  router.push('/design/steps/review');  
+}
   return (
     <div className="space-y-6">
       <div className="grid md:grid-cols-2 gap-4">
@@ -88,7 +95,9 @@ export default function Page() {
         ))}
       </div>
       <div className={`${addOnList.length > 0 ? 'block' : 'hidden'} mt-8 flex justify-center`}>
-          <button onClick={() => addOnList.forEach((addOn) => setAddOn(addOn))} className='text-white w-full bg-green-500 p-4 rounded-lg '>Confirm selected</button>
+        <a href='/design/steps/review' className='w-full'>
+          <button onClick={confirmAddons} className='text-white w-full bg-green-500 p-4 rounded-lg '>Confirm selected</button>
+        </a>
       </div>
     </div>
   );  
