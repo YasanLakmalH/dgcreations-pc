@@ -17,12 +17,12 @@ const Footer = () => {
             <h4 className="text-sm font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/collection" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Collection
+                <Link href="/gallery" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  Gallery
                 </Link>
               </li>
               <li>
-                <Link href="/pantry-designs" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/design" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Pantry Designs
                 </Link>
               </li>
@@ -42,16 +42,7 @@ const Footer = () => {
                   Contact Us
                 </Link>
               </li>
-              <li>
-                <Link href="/shipping" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Shipping Info
-                </Link>
-              </li>
-              <li>
-                <Link href="/returns" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Returns Policy
-                </Link>
-              </li>
+              
             </ul>
           </div>
 

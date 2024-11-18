@@ -7,45 +7,53 @@ import { Card, CardContent } from "@/components/ui/card"
 import { motion } from "framer-motion"
 
 const products = [
+ 
   {
     id: 1,
-    name: "Modern Pantry System",
-    image: "",
+    name: "Elegant Dining Set",
+    image: "/gallery/dining.webp",
     category: "Pantry",
   },
+  
   {
     id: 2,
-    name: "Elegant Dining Set",
-    image: "",
-    category: "Furniture",
+    name: "Pantry Cupboard",
+    image: "/gallery/pantry1.webp",
+    category: "Pantry",
   },
   {
     id: 3,
-    name: "Storage Solutions",
-    image: "",
-    category: "Pantry",
+    name: "Shops tables",
+    image: "/gallery/shop.webp",
+    category: "Other",
   },
   {
     id: 4,
-    name: "Luxury Sofa",
-    image: "",
-    category: "Furniture",
+    name: "Shops tables",
+    image: "/gallery/shop2.webp",
+    category: "Other",
   },
   {
     id: 5,
-    name: "Kitchen Cabinet System",
-    image: "",
-    category: "Pantry",
+    name: "Storage Solutions",
+    image: "/gallery/storage.webp",
+    category: "Other",
   },
   {
     id: 6,
-    name: "Modern Bedroom Set",
-    image: "",
-    category: "Furniture",
+    name: "Bottleneck shelf",
+    image: "/gallery/bottleneck.webp",
+    category: "Other",
+  },
+  {
+    id: 7,
+    name: "TV Wall Panel",
+    image: "/gallery/tv.webp",
+    category: "Other",
   },
 ]
 
-const categories = ["All", "Furniture", "Pantry"]
+const categories = ["All", "Pantry", "Other"]
 
 export default function Collection() {
   const [selectedCategory, setSelectedCategory] = useState("All")

@@ -34,19 +34,19 @@ export default function Page() {
       id: 'modern',
       name: 'Modern',
       description: 'Clean lines and minimalist design',
-      image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=500&q=60'
+      image: '/style/modern.webp'
     },
     {
       id: 'traditional',
       name: 'Traditional',
       description: 'Classic design with timeless appeal',
-      image: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=500&q=60'
+      image: '/style/traditional.webp'
     },
     {
       id: 'other',
       name: 'Other',
       description: 'Can be discussed',
-      image: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=500&q=60'
+      image: '/style/other.webp'
     },
   ];
 

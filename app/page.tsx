@@ -38,19 +38,19 @@ const featuredProducts = [
   {
     id: 1,
     name: "Modern Pantry System",
-    image: "",
+    image: "/gallery/pantry3.webp",
     category: "Pantry",
   },
   {
     id: 2,
     name: "Elegant Dining Set",
-    image: "",
+    image: "/gallery/dining.webp",
     category: "Furniture",
   },
   {
     id: 3,
-    name: "Storage Solutions",
-    image: "",
+    name: "Settyback",
+    image: "/gallery/setyback.webp",
     category: "Pantry",
   },
 ]

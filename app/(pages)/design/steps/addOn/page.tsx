@@ -3,48 +3,49 @@
 import React from 'react';
 import { useStore,useStep } from '@/store/useStore';
 import { useRouter } from 'next/navigation';
-const storageOptions = [  
-  {
-    id: 'adjustable-shelves',
-    name: 'Adjustable Shelves',
-    description: 'Flexible shelving that can be modified to fit your needs',
-  },
-  {
-    id: 'pull-out-drawers',
-    name: 'Pull-out Drawers',
-    description: 'Smooth-gliding drawers for easy access to items',
-  },
-  {
-    id: 'spice-racks',
-    name: 'Spice Racks',
-    description: 'Organized storage for spices and small containers',
-  },
-  {
-    id: 'wine-rack',
-    name: 'Wine Rack',
-    description: 'Specialized storage for wine bottles',
-  },
-  {
-    id: 'door-organizer',
-    name: 'Door Organizer',
-    description: 'Additional storage space on pantry doors',
-  },
-  {
-    id: 'lazy-susan',
-    name: 'Lazy Susan',
-    description: 'Rotating shelves for corner spaces',
-  },
-  {
-    id: 'fridge',
-    name: 'Door Organizer',
-    description: 'Additional storage space on pantry doors',
-  },
-  {
-    id: 'washine-machine',
-    name: 'Lazy Susan',
-    description: 'Rotating shelves for corner spaces',
-  }
-];
+
+
+const addOns = [{
+  id: 'bottlerack',
+  name: 'Bottle Rack',
+  description: 'Stylish and space-saving storage for your bottles',
+},
+{
+  id: 'cookerhood',
+  name: 'Cooker Hood',
+  description: 'Sleek design to keep your kitchen fresh and smoke-free',
+},
+{
+  id: 'barcounter',
+  name: 'Bar Counter',
+  description: 'Add a touch of elegance with a functional bar area',
+},
+{
+  id: 'diningtable',
+  name: 'Dining Table',
+  description: 'Integrated dining solution for compact spaces',
+},
+{
+  id: 'ovenarea',
+  name: 'Oven Area',
+  description: 'Dedicated space for seamless oven placement',
+},
+{
+  id: 'larderrack',
+  name: 'Larder Rack',
+  description: 'Optimize storage with a pull-out larder rack',
+},
+{
+  id: 'lighting',
+  name: 'Lighting',
+  description: 'Enhance your pantry with modern, customizable lighting',
+},
+{
+  id: 'None',
+  name: 'None',
+  description: 'Keep it simple without adding extra features',
+}
+]
 
 export default function Page() {
   const { currentStep } = useStep();
@@ -61,7 +62,7 @@ const confirmAddons = () => {
   return (
     <div className="space-y-6">
       <div className="grid md:grid-cols-2 gap-4">
-        {storageOptions.map((option) => (
+        {addOns.map((option) => (
           <div
             key={option.id}
             className={`p-4 rounded-lg shadow-lg cursor-pointer transition-all duration-200 ${

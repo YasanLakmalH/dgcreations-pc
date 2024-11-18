@@ -6,58 +6,46 @@ import { useStore } from '@/store/useStore';
 
 const materials = [
   {
-    id: 'solid-wood',
-    name: 'Solid Wood',
-    description: 'Natural beauty and durability',
-    price: 'High',
-    maintenance: 'Moderate',
-    image: 'https://images.unsplash.com/photo-1600566753151-384129cf4e3e?auto=format&fit=crop&w=500&q=60'
+    id: 'plywood',
+    name: 'Plywood',
+    description: 'Versatile and durable engineered wood',
+    image: '/material/plywood.webp'
+  },
+  {
+    id: 'melamine',
+    name: 'Melamine',
+    description: 'Easy-to-clean, affordable surface with a smooth finish',
+    image: '/material/melamine.webp'
+  },
+  {
+    id: 'pvc',
+    name: 'PVC',
+    description: 'Lightweight, waterproof, and versatile plastic material',
+    image: '/material/pvc.webp'
+  },
+  {
+    id: 'polyester',
+    name: 'Polyester',
+    description: 'Affordable and durable synthetic finish',
+    image: '/material/polyester.webp'
   },
   {
     id: 'mdf',
-    name: 'MDF with Finish',
-    description: 'Versatile and cost-effective',
-    price: 'Medium',
-    maintenance: 'Low',
-    image: 'https://images.unsplash.com/photo-1600566753225-3c64b565d2c4?auto=format&fit=crop&w=500&q=60'
+    name: 'MDF',
+    description: 'Smooth and stable engineered wood, great for painting',
+    image: '/material/mdf.webp'
   },
   {
-    id: 'laminate',
-    name: 'Laminate',
-    description: 'Durable and easy to clean',
-    price: 'Low',
-    maintenance: 'Very Low',
-    image: 'https://images.unsplash.com/photo-1600566752289-8d091cc7a6dc?auto=format&fit=crop&w=500&q=60'
-  },
-  {
-    id: 'thermofoil',
-    name: 'Thermofoil',
-    description: 'Seamless finish and moisture resistant',
-    price: 'Medium',
-    maintenance: 'Low',
-    image: 'https://images.unsplash.com/photo-1600566752826-461c1b5c2a3b?auto=format&fit=crop&w=500&q=60'
+    id: 'other',
+    name: 'Other',
+    description: 'discuss with professionals',
+    image: '/material/plywoodkc.webp'
   }
 ];
 
 export default function Page() {
   const { design } = useStore();
   const setMaterial = useStore((state) => state.setMaterial);
-
-  const materials = [
-    {
-      id: 'solid-wood',
-      name: 'Solid Wood',
-      description: 'Natural beauty and durability',
-      image: 'https://images.unsplash.com/photo-1600566753151-384129cf4e3e?auto=format&fit=crop&w=500&q=60'
-    },
-    {
-      id: 'mdf',
-      name: 'MDF with Finish',
-      description: 'Versatile and cost-effective',
-      image: 'https://images.unsplash.com/photo-1600566753151-384129cf4e3e?auto=format&fit=crop&w=500&q=60'
-    }
-
-  ];
 
   return (
     <div className="space-y-6">
@@ -67,22 +55,21 @@ export default function Page() {
           {materials.map((material) => (
             <div
               key={material.id}
-              className={`bg-white rounded-lg overflow-hidden cursor-pointer transition-all duration-200 ${
-                design.material === material.id
+              className={`bg-white rounded-lg overflow-hidden cursor-pointer transition-all duration-200 ${design.material === material.id
                   ? 'ring-2 ring-indigo-600'
                   : 'hover:shadow-lg'
-              }`}
+                }`}
               onClick={() => setMaterial(material.id)}
             >
               <img
                 src={material.image}
                 alt={material.name}
-                className="w-full h-80 object-cover"
+                className="w-full h-20 object-cover"
               />
               <div className="p-4">
                 <h4 className="font-medium text-gray-900">{material.name}</h4>
                 <p className="mt-1 text-sm text-gray-500">{material.description}</p>
-                
+
               </div>
             </div>
           ))}

@@ -23,7 +23,12 @@ export const sendEmailFromClient = async (data: Email) => {
         subject: subject,
         message: message,
     };
-
+    console.log({
+        from_name: name,
+        from_email: email,
+        subject: subject,
+        message: message,
+    });
     try {
         const response = await emailjs
             .send(
@@ -54,7 +59,7 @@ export const sendEmailFromClient = async (data: Email) => {
 
 export const sendOrderEmailFromClient = async (data: OrderEmail) => {
     const { orderId, customerName, customerPhone } = data;
-
+    console.log('MAIL SERVICE COMING:', data);
     const templateParams = {
         order_id: orderId,
         from_name: customerName,
@@ -66,7 +71,7 @@ export const sendOrderEmailFromClient = async (data: OrderEmail) => {
         const response = await emailjs
             .send(
                 process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
-                process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string,
+                process.env.NEXT_PUBLIC_EMAILJS_ORDER_TEMPLATE_ID as string,
                 templateParams,
                 { publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_ID }
             )
