@@ -21,7 +21,7 @@ export const useStore = create<DesignState>()(
             email: '',
             phone: '',
             location: '',
-            areaImgs:[]
+            areaImgs: undefined
           }       
         
       },

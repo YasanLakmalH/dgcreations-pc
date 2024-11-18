@@ -7,17 +7,7 @@ import { OrderType } from '@/types/types';
 import axios from 'axios';
 import { sendOrderEmailFromClient } from '@/mailService';
 
-const submitOrder = async (details:OrderType) => {
-    try {
-      const response = await axios.post('/api/order', details);
 
-    //   sendOrderEmailFromClient(details)
-      console.log('Design details posted successfully:', response.data);
-    } catch (error) {
-      console.error('Error posting design details:', error);
-    }
-  };
-  
 
 export default function Page() {
     const {design} = useStore();

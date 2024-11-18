@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import { useStore } from '@/store/useStore';
+import axios from 'axios';
+import { Design, OrderType } from '@/types/types';
 
 export default function Page() {
     const { design } = useStore();
@@ -13,7 +15,7 @@ export default function Page() {
         email: design.customerDetails?.email || '',
         phone: design.customerDetails?.phone || '',
         address: design.customerDetails?.address || '',
-        photo: null as File | null,
+        photo: design.customerDetails?.areaImgs || null
     });
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,10 +34,21 @@ export default function Page() {
         }));
     };
 
-    const handleSubmit = () => {
-        // Handle submit logic, e.g., update global state or send to server
-        setCustomerDetails(customerDetails);
+    const submitOrder = async (details: Design,) => {
+        try {
+            const response = await axios.post('/api/order', details);
+
+            console.log('Design details posted successfully:', response.data);
+        } catch (error) {
+            console.error('Error posting design details:', error);
+        }
     };
+
+    const handleSubmit = () => {
+        setCustomerDetails(customerDetails);
+        submitOrder(design);
+    };
+
 
     return (
         <div className="space-y-6">

@@ -25,7 +25,7 @@ export interface Customer {
     phone?: string;
     address?: string;
     location?: string;
-    areaImgs?: string[];
+    areaImgs?:File;
 }
 
 export type Measurements = {
@@ -67,14 +67,7 @@ export interface StepState {
 
 export type OrderType = {
     orderId: string;
-    measurements:Measurements;
-    layout:string;
-    style:string;
-    color:string;
-    material:string;
-    addOn:string[];
-    additionalNotes:string;
-    customer:Customer;
+    design: Design;
     createdAt: string;
   }
   

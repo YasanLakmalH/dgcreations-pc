@@ -18,7 +18,7 @@ import useEmblaCarousel from "embla-carousel-react"
 
 const heroSlides = [
   {
-    image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6",
+    image: "/heroimgs/hero1.jpg",
     title: "Modern Living",
     description: "Discover our premium collection of contemporary furniture",
   },
@@ -28,7 +28,7 @@ const heroSlides = [
     description: "Custom pantry solutions for your dream kitchen",
   },
   {
-    image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace",
+    image: "/heroimgs/HeroImg3.webp",
     title: "Luxury Design",
     description: "Elevate your space with our signature collections",
   },

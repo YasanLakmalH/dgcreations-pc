@@ -14,54 +14,68 @@ import {
 } from "@/components/ui/select";
 
 const products = [
-  {
+  { 
     id: 1,
-    name: "Luxury Sofa Set",
-    category: "Living Room",
-    image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc",
+    name: "Bottle Rack",
+    category: "Kitchen Room",
+    image: "/Products/BottleRack/1.webp",
     description: "Premium leather sofa with modern design",
   },
   {
     id: 2,
-    name: "Modern Dining Table",
+    name: "Dining Table",
     category: "Dining Room",
-    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2",
+    image: "/Products/DiningTable/7.webp",
     description: "Elegant dining table with glass top",
   },
   {
     id: 3,
-    name: "Pantry Organization System",
+    name: "Oven Cupboard",
     category: "Kitchen",
-    image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea",
+    image: "/Products/OvenCup/3.webp",
     description: "Complete pantry organization solution",
   },
   {
     id: 4,
-    name: "Executive Office Desk",
-    category: "Office",
-    image: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd",
+    name: "Refrigerator Cabinet", 
+    category: "Kitchen",
+    image: "/Products/RefrigeratorCup/11.webp",
     description: "Professional office desk with storage",
   },
   {
     id: 5,
-    name: "Kitchen Cabinet Set",
-    category: "Kitchen",
-    image: "https://images.unsplash.com/photo-1556911220-bff31c812dba",
+    name: "Sety Back",
+    category: "Living Room",
+    image: "/Products/SetyBack/15.webp",
     description: "Modern kitchen cabinet system",
   },
   {
     id: 6,
-    name: "Bedroom Suite",
-    category: "Bedroom",
-    image: "https://images.unsplash.com/photo-1505693314120-0d443867891c",
+    name: "Shop Tables",
+    category: "Shop",
+    image: "/Products/ShopTables/19.webp",
+    description: "Complete bedroom furniture set",
+  },
+  {
+    id: 7,
+    name: "Storage Compartment",
+    category: "Office",
+    image: "/Products/StorageCompartments/13.webp",
+    description: "Complete bedroom furniture set",
+  },
+  {
+    id: 8,
+    name: "TV Wall Panel",
+    category: "Living Room",
+    image: "/Products/TVWallPanel/4.webp",
     description: "Complete bedroom furniture set",
   },
 ];
 
-const categories = ["All", "Living Room", "Dining Room", "Kitchen", "Office", "Bedroom"];
+const categories = ["All", "Living Room", "Dining Room", "Kitchen", "Office", "Shop"];
 const sortOptions = ["Name: A to Z", "Name: Z to A"];
 
-const Page = () => {
+export default function Page() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [sortBy, setSortBy] = useState(sortOptions[0]);
 
@@ -102,7 +116,7 @@ const Page = () => {
                 key={category}
                 variant={selectedCategory === category ? "default" : "outline"}
                 onClick={() => setSelectedCategory(category)}
-                className="min-w-[100px]"
+                className={`min-w-[100px] ${selectedCategory === category ? "bg-primary text-white" : ""}`}
               >
                 {category}
               </Button>
@@ -157,4 +171,3 @@ const Page = () => {
   );
 };
 
-export default Page;

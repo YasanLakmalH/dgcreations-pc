@@ -59,7 +59,7 @@ export default function Collection() {
       {/* Header */}
       <div className="bg-muted/30 py-16">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold text-center mb-4">Our Collection</h1>
+          <h1 className="text-4xl font-bold text-center mb-4">Our Works</h1>
           <p className="text-center text-muted-foreground max-w-2xl mx-auto">
             Discover our curated collection of premium furniture and pantry solutions,
             designed to transform your living space.
