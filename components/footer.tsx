@@ -17,12 +17,12 @@ const Footer = () => {
             <h4 className="text-sm font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/collection" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Collection
+                <Link href="/gallery" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  Gallery
                 </Link>
               </li>
               <li>
-                <Link href="/pantry-designs" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/design" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Pantry Designs
                 </Link>
               </li>
@@ -42,30 +42,15 @@ const Footer = () => {
                   Contact Us
                 </Link>
               </li>
-              <li>
-                <Link href="/shipping" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Shipping Info
-                </Link>
-              </li>
-              <li>
-                <Link href="/returns" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Returns Policy
-                </Link>
-              </li>
+              
             </ul>
           </div>
 
           <div>
             <h4 className="text-sm font-semibold mb-4">Connect With Us</h4>
             <div className="flex space-x-4">
-              <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <Link href="https://web.facebook.com/profile.php?id=61550670151521" className="text-muted-foreground hover:text-primary transition-colors">
                 <Facebook className="h-5 w-5" />
-              </Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Instagram className="h-5 w-5" />
-              </Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Twitter className="h-5 w-5" />
               </Link>
             </div>
           </div>

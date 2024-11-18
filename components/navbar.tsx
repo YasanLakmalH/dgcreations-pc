@@ -12,18 +12,19 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const { theme, setTheme } = useTheme()
 
-  useEffect(() => {
+ useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0)
     }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  }, []) 
 
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/products", label: "Products" },
-    { href: "/collection", label: "Collection" },
+    { href: "/gallery", label: "Gallery" },
+    { href: "/design", label: "Design" },
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
   ]
@@ -33,7 +34,7 @@ const Navbar = () => {
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300",
         isScrolled || isMobileMenuOpen
-          ? "bg-background/95 backdrop-blur-md border-b"
+          ? "bg-background/95 backdrop-blur-md "
           : "bg-background/50 backdrop-blur-sm"
       )}
     >
@@ -59,7 +60,7 @@ const Navbar = () => {
             ))}
           </div>
 
-          <div className="hidden md:flex items-center space-x-4">
+          <div className=" invisible items-center space-x-4">
             <Button
               variant="ghost"
               size="icon"
@@ -100,7 +101,7 @@ const Navbar = () => {
                   {link.label}
                 </Link>
               ))}
-              <div className="flex items-center space-x-4 pt-4 border-t">
+              <div className="invisible flex items-center space-x-4 pt-4 border-t">
                 <Button
                   variant="ghost"
                   size="icon"
@@ -109,9 +110,6 @@ const Navbar = () => {
                 >
                   <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
                   <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                </Button>
-                <Button variant="ghost" size="icon" className="hover:bg-muted">
-                  <ShoppingCart className="h-5 w-5" />
                 </Button>
               </div>
             </div>

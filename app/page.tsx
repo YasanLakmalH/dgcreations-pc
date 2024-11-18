@@ -1,24 +1,15 @@
 "use client"
-
-import { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
+
 import { motion } from "framer-motion"
-import Testimonials from "@/components/testimonials"
-import useEmblaCarousel from "embla-carousel-react"
+
 
 const heroSlides = [
   {
-    image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6",
+    image: "/heroimgs/hero1.jpg",
     title: "Modern Living",
     description: "Discover our premium collection of contemporary furniture",
   },
@@ -28,7 +19,7 @@ const heroSlides = [
     description: "Custom pantry solutions for your dream kitchen",
   },
   {
-    image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace",
+    image: "/heroimgs/HeroImg3.webp",
     title: "Luxury Design",
     description: "Elevate your space with our signature collections",
   },
@@ -38,53 +29,38 @@ const featuredProducts = [
   {
     id: 1,
     name: "Modern Pantry System",
-    image: "https://images.unsplash.com/photo-1600566752355-35792bedcfea",
-    price: "$2,499",
+    image: "/gallery/pantry3.webp",
     category: "Pantry",
   },
   {
     id: 2,
     name: "Elegant Dining Set",
-    image: "https://images.unsplash.com/photo-1617806118233-18e1de247200",
-    price: "$1,899",
+    image: "/gallery/dining.webp",
     category: "Furniture",
   },
   {
     id: 3,
-    name: "Storage Solutions",
-    image: "https://images.unsplash.com/photo-1595514535215-8a5b64b2b681",
-    price: "$999",
+    name: "Settyback",
+    image: "/gallery/setyback.webp",
     category: "Pantry",
   },
 ]
 
 export default function Home() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
 
-  useEffect(() => {
-    if (emblaApi) {
-      const interval = setInterval(() => {
-        emblaApi.scrollNext()
-      }, 5000)
-
-      return () => clearInterval(interval)
-    }
-  }, [emblaApi])
 
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
       <section className="relative h-screen">
-        <div className="overflow-hidden h-full" ref={emblaRef}>
+        <div className="overflow-hidden h-full">
           <div className="flex h-full">
-            {heroSlides.map((slide, index) => (
-              <div key={index} className="relative h-full flex-[0_0_100%]">
+              <div className="relative h-full flex-[0_0_100%]">
                 <Image
-                  src={slide.image}
-                  alt={slide.title}
+                  src={heroSlides[2].image}
+                  alt={heroSlides[2].title}
                   fill
                   className="object-cover"
-                  priority={index === 0}
                 />
                 <div className="absolute inset-0 bg-black/40" />
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -95,7 +71,7 @@ export default function Home() {
                       transition={{ duration: 0.6 }}
                       className="text-4xl md:text-6xl font-bold"
                     >
-                      {slide.title}
+                      {heroSlides[2].title}
                     </motion.h1>
                     <motion.p
                       initial={{ opacity: 0, y: 20 }}
@@ -103,23 +79,22 @@ export default function Home() {
                       transition={{ duration: 0.6, delay: 0.2 }}
                       className="text-lg md:text-xl"
                     >
-                      {slide.description}
+                      {heroSlides[2].description}
                     </motion.p>
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.4 }}
                     >
-                      <Link href="/collection">
+                      <Link href="/gallery">
                         <Button size="lg" className="mt-4">
-                          Explore Collection
+                          Explore Our Works
                         </Button>
                       </Link>
                     </motion.div>
                   </div>
                 </div>
               </div>
-            ))}
           </div>
         </div>
       </section>
@@ -150,10 +125,6 @@ export default function Home() {
                     <div className="p-4">
                       <h3 className="text-lg font-semibold">{product.name}</h3>
                       <p className="text-muted-foreground">{product.category}</p>
-                      <div className="flex justify-between items-center mt-2">
-                        <span className="font-bold">{product.price}</span>
-                        <Button variant="outline" size="sm">View Details</Button>
-                      </div>
                     </div>
                   </CardContent>
                 </Card>
@@ -172,17 +143,14 @@ export default function Home() {
               {
                 title: "Premium Quality",
                 description: "Handcrafted with the finest materials for lasting beauty",
-                icon: "✨",
               },
               {
                 title: "Custom Design",
                 description: "Tailored solutions to match your unique style and space",
-                icon: "🎨",
               },
               {
                 title: "Expert Installation",
                 description: "Professional installation by our skilled craftsmen",
-                icon: "🛠️",
               },
             ].map((feature, index) => (
               <motion.div
@@ -193,7 +161,6 @@ export default function Home() {
                 viewport={{ once: true }}
                 className="text-center p-6 hover:bg-muted/50 rounded-lg transition-colors duration-300"
               >
-                <span className="text-4xl mb-4 block">{feature.icon}</span>
                 <h3 className="text-xl font-semibold mb-4">{feature.title}</h3>
                 <p className="text-muted-foreground">{feature.description}</p>
               </motion.div>
@@ -202,8 +169,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <Testimonials />
     </div>
   )
 }
