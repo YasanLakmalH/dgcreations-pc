@@ -1,4 +1,3 @@
-import { Link } from "lucide-react";
 
 export default function Page() {
     return (
@@ -23,7 +22,7 @@ export default function Page() {
                     />
                 ))}
             </div>
-            <div className="p-8 text-center w-full py-72">
+            <div className="p-8 text-center w-full py-72 z-10">
                 <h1 className="text-4xl font-bold mb-4 text-black">Transform Your Space with Personalized Designs!</h1>
                 <p className="text-black mb-6"> Explore endless design possibilities and craft a pantry that&apos;s uniquely yours—let&apos;s get started!
                     .</p>

@@ -64,11 +64,15 @@ export default function Contact() {
                   <div>
                     <h3 className="font-semibold">Visit Us</h3>
                     <p className="text-muted-foreground">
-                      123 Design Street
+                      1162/6A,
                       <br />
-                      Creative District
+                      Malabe Road,
                       <br />
-                      New York, NY 10001
+                      Kottawa,
+                      <br />
+                      Pannipitiya,
+                      <br />  
+                      Sri Lanka
                     </p>
                   </div>
                 </div>
@@ -76,14 +80,15 @@ export default function Contact() {
                   <Phone className="w-6 h-6 text-primary" />
                   <div>
                     <h3 className="font-semibold">Call Us</h3>
-                    <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                    <p className="text-muted-foreground">+94 (77) 534 9909</p>
+                    <p className="text-muted-foreground">+94 (76) 322 6489</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
                   <Mail className="w-6 h-6 text-primary" />
                   <div>
                     <h3 className="font-semibold">Email Us</h3>
-                    <p className="text-muted-foreground">info@dgcreations.com</p>
+                    <p className="text-muted-foreground">dgcreationslk@gmail.com</p>
                   </div>
                 </div>
               </div>

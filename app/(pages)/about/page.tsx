@@ -34,7 +34,7 @@ export default function About() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg md:text-xl max-w-2xl mx-auto"
             >
-              Crafting premium furniture and pantry solutions since 1995
+              Crafting premium furniture and pantry solutions since 2019
             </motion.p>
           </div>
         </div>
@@ -52,12 +52,8 @@ export default function About() {
             >
               <h2 className="text-3xl font-bold mb-6">Our Story</h2>
               <p className="text-muted-foreground mb-4">
-                Founded in 1995, DG Creations has been at the forefront of innovative furniture design and premium pantry solutions. Our journey began with a simple mission: to create exceptional pieces that transform living spaces.
-              </p>
-              <p className="text-muted-foreground mb-6">
-                Today, we continue to push boundaries in design and craftsmanship, combining traditional techniques with modern innovation to create furniture that stands the test of time.
-              </p>
-              <Button size="lg">Learn More</Button>
+              Founded in 2019, DG Creation Shop brings over five years of expertise in crafting exceptional pantry cupboard designs, custom furniture, and innovative furniture solutions. Our journey is rooted in a passion for transforming spaces with unique, functional, and stylish pieces tailored to individual needs.
+              Combining traditional craftsmanship with modern design techniques, we specialize in creating customized furniture such as tables, cupboards, and more, designed to enhance and elevate your living spaces. At DG Creation Shop, we strive to deliver quality and creativity that stand the test of time.              </p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 20 }}

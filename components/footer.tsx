@@ -49,14 +49,8 @@ const Footer = () => {
           <div>
             <h4 className="text-sm font-semibold mb-4">Connect With Us</h4>
             <div className="flex space-x-4">
-              <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <Link href="https://web.facebook.com/profile.php?id=61550670151521" className="text-muted-foreground hover:text-primary transition-colors">
                 <Facebook className="h-5 w-5" />
-              </Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Instagram className="h-5 w-5" />
-              </Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Twitter className="h-5 w-5" />
               </Link>
             </div>
           </div>

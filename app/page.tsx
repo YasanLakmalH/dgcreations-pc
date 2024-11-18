@@ -1,20 +1,11 @@
 "use client"
-
-import { useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
+
 import { motion } from "framer-motion"
-import Testimonials from "@/components/testimonials"
-import useEmblaCarousel from "embla-carousel-react"
+
 
 const heroSlides = [
   {
@@ -178,8 +169,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <Testimonials />
     </div>
   )
 }
