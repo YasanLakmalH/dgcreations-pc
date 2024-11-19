@@ -5,12 +5,10 @@ import { useRouter } from 'next/navigation';
 
 export default function Page() {
     const {design,} = useStore();
-    const clearDesign = useStore((state) => state.reset);
     const resetStep = useStep((state) => state.reset);
     const router = useRouter();
 
   const handleGoHome = () => {
-    clearDesign(); 
     resetStep();
     router.push('/');
   };
@@ -29,14 +27,14 @@ export default function Page() {
           and contact you within 24 hours to discuss the next steps.
         </p>
       </div>
-      <div className='flex justify-center w-full'>
+        <div className='flex justify-center'>
       <a href='/'> <button
        className=' mt-6 px-4 py-4 bg-indigo-600 text-white rounded-md hover:bg-indigo-700' 
         onClick={handleGoHome}
        >Go To Home</button></a>
       </div>
-      <div className="grid md:grid-cols-2 gap-6">
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+      <div className="flex justify-center w-full">
+        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 w-full">
           <h4 className="font-medium text-gray-900 mb-4">Whats Next?</h4>
           <ul className="space-y-3">
             <li className="flex items-center text-gray-600">
@@ -57,27 +55,7 @@ export default function Page() {
             </li>
           </ul>
         </div>
-
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-          <h4 className="font-medium text-gray-900 mb-4">Installation Details</h4>
-          <div className="space-y-3 text-gray-600">
-            
-            <p>
-              <strong>Contact:</strong>{' '}
-              {design.customerDetails?.name}
-            </p>
-            <p>
-              <strong>Email:</strong>{' '}
-              {design.customerDetails?.email}
-            </p>
-            <p>
-              <strong>Phone:</strong>{' '}
-              {design.customerDetails?.phone}
-            </p>
-          </div>
-        </div>
       </div>
-
       <div className="mt-8 p-4 bg-gray-50 rounded-lg">
         <h4 className="text-lg font-medium text-gray-900 mb-2">Need Help?</h4>
         <p className="text-gray-600 mb-4">

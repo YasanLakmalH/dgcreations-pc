@@ -27,9 +27,7 @@ export default function Page() {
                 <p className="text-black mb-6"> Explore endless design possibilities and craft a pantry that&apos;s uniquely yours—let&apos;s get started!
                     .</p>
                 <a href="design/steps/measurements"><button className="bg-blue-600 text-white px-6 py-3 rounded-md">Customize</button></a>
-
             </div>
-
         </div>
 
     );

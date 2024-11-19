@@ -36,13 +36,13 @@ const featuredProducts = [
     id: 2,
     name: "Elegant Dining Set",
     image: "/gallery/dining.webp",
-    category: "Furniture",
+    category: "Pantry",
   },
   {
     id: 3,
     name: "Settyback",
     image: "/gallery/setyback.webp",
-    category: "Pantry",
+    category: "Furniture",
   },
 ]
 
