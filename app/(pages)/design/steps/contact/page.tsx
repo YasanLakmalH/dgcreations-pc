@@ -7,8 +7,7 @@ import { sendOrderEmailFromClient } from '@/mailService';
 import { AlertCircle } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useStep } from '@/store/useStore';
-
-
+import { BASE_API_URL } from '@/constants/constants';
 
 export default function Page() {
   const { design } = useStore();
@@ -17,7 +16,8 @@ export default function Page() {
   const router = useRouter();
   const { currentStep } = useStep();
   const goToNextStep = useStep((state) => state.goToNextStep);
-  
+  const clearDesign = useStore((state) => state.reset);
+
   const [customerDetails, setCustomerDetailsState] = useState({
     name: design.customerDetails?.name || '',
     email: design.customerDetails?.email || '',
@@ -56,9 +56,8 @@ export default function Page() {
 
   const submitOrder = async (details: Design) => {
     try {
-      const response = await axios.post('/api/order', details);  
-      console.log('Order details posted:', response.data["customerDetails"]);
-      console.log('Order ID:', response.data["orderId"]);
+
+      const response = await axios.post(`${BASE_API_URL}/api/order`, details);  
       return response.data["orderId"];
 
 
@@ -85,6 +84,9 @@ export default function Page() {
   };
 
   const handleSubmit = async() => {
+    if(!BASE_API_URL){
+      return null;
+    }
     const isValid = validateForm();
     if (!isValid) return;
 
@@ -100,7 +102,7 @@ export default function Page() {
       customerName: customerDetails.name ?? 'Unknown',
       customerPhone: customerDetails.phone ?? 'No phone number',
     });
-
+    clearDesign(); 
     goToNextStep(currentStep);
     router.push('/design/steps/finalize');
   };
