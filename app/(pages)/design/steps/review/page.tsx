@@ -11,7 +11,6 @@ export default function Page() {
     const formatMeasurements = (measurements: Measurements) => {
         return `${measurements.width}" × ${measurements.height}" × ${measurements.depth}"`;
     };
-console.log(design.addon);
    
     return (
         <div className="space-y-6 animate-fade-in">

@@ -58,8 +58,6 @@ export default function Page() {
     try {
 
       const response = await axios.post(`${BASE_API_URL}/api/order`, details);  
-      console.log('Order details posted:', response.data["customerDetails"]);
-      console.log('Order ID:', response.data["orderId"]);
       return response.data["orderId"];
 
 

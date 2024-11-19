@@ -1,10 +1,9 @@
 'use client'
 import React from 'react';
-import { useStep, useStore } from '@/store/useStore';
+import { useStep} from '@/store/useStore';
 import { useRouter } from 'next/navigation';
 
 export default function Page() {
-    const {design,} = useStore();
     const resetStep = useStep((state) => state.reset);
     const router = useRouter();
 
