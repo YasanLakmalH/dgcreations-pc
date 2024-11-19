@@ -16,13 +16,13 @@ import {
   Calendar,
   Save,
 } from 'lucide-react';
-
+import StepIndicatorMobile from '@/components/stepIndicatorMobile';
 const stepsList: Step[] = [
   { id: 1, title: 'Measurements', icon: Ruler, path: '/design/steps/measurements' },
   { id: 2, title: 'Layout', icon: LayoutGrid, path: '/design/steps/layout' },
   { id: 3, title: 'Style', icon: Palette, path: '/design/steps/style' },
   { id: 4, title: 'Material', icon: Layers, path: '/design/steps/material' },
-  { id: 5, title: 'Add On', icon: Package, path: '/design/steps/addOn' },
+  { id: 5, title: 'Add', icon: Package, path: '/design/steps/addOn' },
   { id: 6, title: 'Review', icon: ClipboardCheck, path: '/design/steps/review' },
   { id: 7, title: 'contact', icon: Calendar, path: '/design/steps/contact' },
   { id: 8, title: 'Finalize', icon: Save, path: '/design/steps/finalize' },
@@ -94,11 +94,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       router.push(stepsList[currentStep - 2].path); // Navigate to the previous step's path
     }
   };
-
   return (
+
     <div className="bg-white rounded-lg shadow-sm border border-gray-200 animate-fade-in p-8 mt-16">
       <StepIndicator steps={stepsList} currentStep={currentStep} />
-
+      <StepIndicatorMobile currentStep={currentStep} />
       {error && (
         <div className="mx-4 mt-4 p-3 bg-red-50 border border-red-200 rounded-md flex items-center text-red-700 animate-shake">
           <AlertCircle className="w-5 h-5 mr-2" />

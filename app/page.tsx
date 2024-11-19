@@ -3,9 +3,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-
 import { motion } from "framer-motion"
-
+import { GemIcon, Paintbrush, Award } from "lucide-react"
 
 const heroSlides = [
   {
@@ -55,46 +54,46 @@ export default function Home() {
       <section className="relative h-screen">
         <div className="overflow-hidden h-full">
           <div className="flex h-full">
-              <div className="relative h-full flex-[0_0_100%]">
-                <Image
-                  src={heroSlides[2].image}
-                  alt={heroSlides[2].title}
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-black/40" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center text-white space-y-4 p-4">
-                    <motion.h1
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6 }}
-                      className="text-4xl md:text-6xl font-bold"
-                    >
-                      {heroSlides[2].title}
-                    </motion.h1>
-                    <motion.p
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: 0.2 }}
-                      className="text-lg md:text-xl"
-                    >
-                      {heroSlides[2].description}
-                    </motion.p>
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: 0.4 }}
-                    >
-                      <Link href="/gallery">
-                        <Button size="lg" className="mt-4">
-                          Explore Our Works
-                        </Button>
-                      </Link>
-                    </motion.div>
-                  </div>
+            <div className="relative h-full flex-[0_0_100%]">
+              <Image
+                src={heroSlides[2].image}
+                alt={heroSlides[2].title}
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-black/40" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center text-white space-y-4 p-4">
+                  <motion.h1
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="text-4xl md:text-6xl font-bold"
+                  >
+                    {heroSlides[2].title}
+                  </motion.h1>
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    className="text-lg md:text-xl"
+                  >
+                    {heroSlides[2].description}
+                  </motion.p>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                  >
+                    <Link href="/gallery">
+                      <Button size="lg" className="mt-4">
+                        Explore Our Works
+                      </Button>
+                    </Link>
+                  </motion.div>
                 </div>
               </div>
+            </div>
           </div>
         </div>
       </section>
@@ -112,6 +111,7 @@ export default function Home() {
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
               >
+                <a href="/products">
                 <Card className="overflow-hidden group">
                   <CardContent className="p-0">
                     <div className="relative h-64">
@@ -128,6 +128,7 @@ export default function Home() {
                     </div>
                   </CardContent>
                 </Card>
+                </a>
               </motion.div>
             ))}
           </div>
@@ -143,14 +144,17 @@ export default function Home() {
               {
                 title: "Premium Quality",
                 description: "Handcrafted with the finest materials for lasting beauty",
+                icon: <GemIcon />,
               },
               {
                 title: "Custom Design",
                 description: "Tailored solutions to match your unique style and space",
+                icon: <Paintbrush />,
               },
               {
                 title: "Expert Installation",
                 description: "Professional installation by our skilled craftsmen",
+                icon: <Award/>,
               },
             ].map((feature, index) => (
               <motion.div
@@ -159,8 +163,9 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                className="text-center p-6 hover:bg-muted/50 rounded-lg transition-colors duration-300"
+                className="text-center p-6 rounded-lg transition-colors duration-300 shadow-lg bg-stone-200"
               >
+                <span className="flex justify-center py-3">{feature.icon}</span>
                 <h3 className="text-xl font-semibold mb-4">{feature.title}</h3>
                 <p className="text-muted-foreground">{feature.description}</p>
               </motion.div>

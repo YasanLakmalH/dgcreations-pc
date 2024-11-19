@@ -1,9 +1,9 @@
 import Link from "next/link"
-import { Facebook, Instagram, Twitter } from "lucide-react"
+import { Facebook} from "lucide-react"
 
 const Footer = () => {
   return (
-    <footer className="bg-background border-t">
+    <footer className="bg-black text-white">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
@@ -56,8 +56,8 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} DG Creations. All rights reserved.</p>
+        <div className="mt-8 pt-8 text-center text-sm text-muted-foreground">
+          <p>&copy; {new Date().getFullYear()} DG Creations All rights reserved.</p>
         </div>
       </div>
     </footer>

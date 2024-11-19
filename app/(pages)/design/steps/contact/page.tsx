@@ -17,6 +17,7 @@ export default function Page() {
   const { currentStep } = useStep();
   const goToNextStep = useStep((state) => state.goToNextStep);
   const clearDesign = useStore((state) => state.reset);
+  const [isSubmitted, setSubmitted] = useState(false);
 
   const [customerDetails, setCustomerDetailsState] = useState({
     name: design.customerDetails?.name || '',
@@ -93,7 +94,7 @@ export default function Page() {
       ...design,
       customerDetails: customerDetails,
     });
-
+    setSubmitted(true);
     await sendOrderEmailFromClient({
       orderId: id,
       fromName: customerDetails.name ?? 'Unknown', // Fallback to 'Unknown' if no name
@@ -199,9 +200,9 @@ export default function Page() {
 
       <button
         onClick={handleSubmit}
-        className="mt-6 px-4 py-2 text-white rounded-md bg-green-500 w-full hover:shadow-md"
-      >
-        Submit
+        disabled={isSubmitted}
+        className="mt-6 px-4 py-2 text-white rounded-md bg-green-500 w-full hover:shadow-md">
+        {isSubmitted ? 'Submitting....' : 'Submit'}
       </button>
     </div>
   );
