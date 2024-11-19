@@ -109,7 +109,7 @@ export const useStep = create<StepState>()(
       currentStep: 1,
       goToNextStep: () => set((state) => ({ currentStep: state.currentStep + 1 })),
       goToPreviousStep: () => set((state) => ({ currentStep: state.currentStep - 1 })),
-      reset: () => set({ currentStep: 0 })
+      reset: () => set({ currentStep: 1 })
     }),
     
     { name: 'step-storage' }

@@ -29,10 +29,11 @@ export default function Contact() {
   };
  
   return (
+    
     <div className="min-h-screen pt-16">
       {/* Contact Header */}
-      <section className="bg-muted/30 py-16">
-        <div className="container mx-auto px-4">
+      <section className=" py-16 bg-black text-white">
+        <div className="container mx-auto px-4 ">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
