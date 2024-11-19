@@ -59,8 +59,6 @@ export default function Page() {
 
       const response = await axios.post(`${BASE_API_URL}/api/order`, details);  
       return response.data["orderId"];
-
-
     } catch (error) {
       console.error('Error posting design details:', error);
     }

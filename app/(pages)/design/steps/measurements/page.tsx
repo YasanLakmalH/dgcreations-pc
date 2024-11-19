@@ -1,10 +1,20 @@
 'use client';
 import { Ruler } from 'lucide-react';
-import { useStore } from '@/store/useStore'; // Adjust the import path
+import { useStore, useStep } from '@/store/useStore'; // Adjust the import path
+import { use, useEffect } from 'react';
 
 export default function Page() {
   const design = useStore((state) => state.design);
   const setMeasurements = useStore((state) => state.setMeasurements);
+  const clearDesign = useStore((state) => state.reset);
+  const resetStep = useStep((state) => state.reset);
+
+  useEffect(() => {
+    if(design){
+      clearDesign();
+      resetStep();
+    }
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
