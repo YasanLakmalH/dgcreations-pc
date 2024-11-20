@@ -35,9 +35,9 @@ const stepsList: Step[] = [
 
 
 export default function StepIndicatorMobile({ currentStep }: Props) {
-    const Icon = stepsList[currentStep].icon;
+    const Icon = stepsList[currentStep-1].icon;
     return (
-        <React.Fragment key={stepsList[currentStep].id}>
+        <React.Fragment key={stepsList[currentStep-1].id}>
             <div className="md:hidden flex flex-col items-center">
                 <div
                     className="w-10 h-10 rounded-full flex items-center justify-center transition-colors bg-indigo-600">
@@ -45,7 +45,7 @@ export default function StepIndicatorMobile({ currentStep }: Props) {
                 </div>
                 <span
                     className="mt-2 text-sm text-indigo-600 font-medium">
-                    {stepsList[currentStep].title}
+                    {stepsList[currentStep-1].title}
                 </span>
             </div>
             {currentStep - 1 < stepsList.length - 1 && (

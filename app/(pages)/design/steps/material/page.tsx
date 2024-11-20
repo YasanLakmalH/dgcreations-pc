@@ -48,10 +48,10 @@ export default function Page() {
   const setMaterial = useStore((state) => state.setMaterial);
 
   return (
-    <div className="space-y-6">
+    <div className="col-span-2">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left Section: Material Selection */}
-        <div className="lg:col-span-2 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="lg:col-span-3 grid md:grid-cols-2 lg:grid-cols-3 gap-1">
           {materials.map((material) => (
             <div
               key={material.id}
@@ -62,7 +62,7 @@ export default function Page() {
               onClick={() => setMaterial(material.id)}
             >
               <img
-                src={material.image}
+                src={material.image}  
                 alt={material.name}
                 className="w-full h-20 object-cover"
               />
@@ -75,16 +75,6 @@ export default function Page() {
           ))}
         </div>
 
-        {/* Right Section: Material Considerations */}
-        <div className="p-4 bg-gray-50 rounded-lg">
-          <h4 className="text-lg font-medium text-gray-900 mb-2">Material Guide</h4>
-          <ul className="list-disc list-inside space-y-2 text-gray-600">
-            <li>Consider your budget and long-term value</li>
-            <li>Think about maintenance requirements</li>
-            <li>Factor in durability needs</li>
-            <li>Match material to your usage patterns</li>
-          </ul>
-        </div>
       </div>
     </div>
   );

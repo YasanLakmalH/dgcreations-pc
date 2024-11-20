@@ -51,8 +51,7 @@ export default function Page() {
   ];
 
   return (
-    <div className="space-y-6">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className='col-span-2'>
         {/* Left Section: Style Selection */}
         <div className="lg:col-span-2 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {styles.map((style) => (
@@ -78,18 +77,6 @@ export default function Page() {
             </div>
           ))}
         </div>
-
-        {/* Right Section: Style Considerations */}
-        <div className="p-4 bg-gray-50 rounded-lg">
-          <h4 className="text-lg font-medium text-gray-900 mb-2">Style Considerations</h4>
-          <ul className="list-disc list-inside space-y-2 text-gray-600">
-            <li>Consider your homes existing style</li>
-            <li>Think about long-term appeal</li>
-            <li>Balance aesthetics with functionality</li>
-            <li>Choose finishes that complement your space</li>
-          </ul>
-        </div>
       </div>
-    </div>
   );
 }

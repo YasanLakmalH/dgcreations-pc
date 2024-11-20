@@ -8,7 +8,6 @@ export default function Page() {
     const router = useRouter();
 
   const handleGoHome = () => {
-    resetStep();
     router.push('/');
   };
 

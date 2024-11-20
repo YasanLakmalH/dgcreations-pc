@@ -60,7 +60,7 @@ const confirmAddons = () => {
   router.push('/design/steps/review');  
 }
   return (
-    <div className="space-y-6">
+    <div >
       <div className="grid md:grid-cols-2 gap-4">
         {addOns.map((option) => (
           <div
