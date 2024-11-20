@@ -49,11 +49,17 @@ export default function Page() {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files ? e.target.files[0] : null;
-    setCustomerDetailsState((prev) => ({
-      ...prev,
-      photo: selectedFile,
-    }));
+  
+    if (selectedFile && selectedFile.type.startsWith('image/')) {
+      setCustomerDetailsState((prev) => ({
+        ...prev,
+        photo: selectedFile,
+      }));
+    } else {
+      alert('Please select an image file.');
+    }
   };
+  
 
   const submitOrder = async (details: Design) => {
     try {
@@ -184,6 +190,7 @@ export default function Page() {
               <input
                 type="file"
                 name="photo"
+                accept="image/*" 
                 onChange={handleFileChange}
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
               />

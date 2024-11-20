@@ -28,10 +28,9 @@ export default function Page() {
   const setLayout = useStore((state) => state.setLayout);
 
   return (
-    <div className="space-y-6">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div className='col-span-2'>
         {/* Left Section: Layout Selection */}
-        <div className="lg:col-span-2 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="lg:col-span-2 grid md:grid-cols-2 lg:grid-cols-3 gap-6 ">
           {layouts.map((layout) => (
             <div
               key={layout.id}
@@ -70,17 +69,7 @@ export default function Page() {
           ))}
         </div>
 
-        {/* Right Section: Layout Considerations */}
-        <div className="p-4 bg-gray-50 rounded-lg">
-          <h4 className="text-lg font-medium text-gray-900 mb-2">Layout Considerations</h4>
-          <ul className="list-disc list-inside space-y-2 text-gray-600">
-            <li>Consider the rooms shape and size</li>
-            <li>Think about traffic flow and accessibility</li>
-            <li>Account for door swings and other obstacles</li>
-            <li>Plan for adequate workspace and storage needs</li>
-          </ul>
-        </div>
+        
       </div>
-    </div>
   );
 }

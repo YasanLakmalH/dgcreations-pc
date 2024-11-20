@@ -26,8 +26,8 @@ const addOns = [{
   description: 'Integrated dining solution for compact spaces',
 },
 {
-  id: 'ovenarea',
-  name: 'Oven Area',
+  id: 'ovencupboard',
+  name: 'Oven Cupboard',
   description: 'Dedicated space for seamless oven placement',
 },
 {
@@ -60,7 +60,7 @@ const confirmAddons = () => {
   router.push('/design/steps/review');  
 }
   return (
-    <div className="space-y-6">
+    <div >
       <div className="grid md:grid-cols-2 gap-4">
         {addOns.map((option) => (
           <div

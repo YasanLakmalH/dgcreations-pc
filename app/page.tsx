@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { motion } from "framer-motion"
 import { GemIcon, Paintbrush, Award } from "lucide-react"
+import DesignBanner from "@/components/designBanner"
 
 const heroSlides = [
   {
@@ -97,7 +98,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-
+    <DesignBanner />
       {/* Featured Products */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">

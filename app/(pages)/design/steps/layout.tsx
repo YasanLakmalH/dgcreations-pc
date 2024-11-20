@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useStep, useStore } from '@/store/useStore';
 import StepIndicator from '../../../../components/StepIndicator';
+import TipsCarousel from '@/components/tipsCarousel';
 import { Step } from '@/types/types';
 import {
   AlertCircle,
@@ -70,9 +71,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           return false;
         }
         break;
-      case 7:;
-      const { name, email, phone, address, areaImgs } = design.customerDetails;
-        if (!name || !email || !phone || !address || !areaImgs) { 
+      case 7: ;
+        const { name, email, phone, address, areaImgs } = design.customerDetails;
+        if (!name || !email || !phone || !address || !areaImgs) {
           setError('Please complete all required customer details');
           return false;
         }
@@ -107,7 +108,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       )}
 
       <div className="px-4 py-11 sm:px-6 transition-all duration-300 animate-fade-in">
-        {children}
+        <div className={`grid ${currentStep < 5 ? 'md:grid-cols-3':'' } `}> 
+          {children} 
+          <div className='lg:px-10 sm:h-full md:full lg:h-32'>
+          {currentStep < 5 ? (<TipsCarousel currentStepId={stepsList[currentStep - 1].id} title={stepsList[currentStep-1].title} />):''}
+          </div>
+        </div>
+
       </div>
 
       <div className="px-4 sm:px-6">
@@ -116,10 +123,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             onClick={handlePrevious}
             disabled={currentStep === 1}
             className={`px-4 py-2 rounded-md transition-all duration-200 transform hover:scale-105
-               bg-white text-gray-700 hover:bg-gray-50 border border-gray-300 hover:shadow-sm ${
-              currentStep === 1
+               bg-white text-gray-700 hover:bg-gray-50 border border-gray-300 hover:shadow-sm ${currentStep === 1
                 ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                : currentStep === stepsList.length ? 'hidden': 'block'} }
+                : currentStep === stepsList.length ? 'hidden' : 'block'} }
                 `}
           >
             Previous
@@ -127,11 +133,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <button
             onClick={handleNext}
             disabled={currentStep === stepsList.length}
-            className={`px-6 py-2 rounded-md transition-all duration-200 transform hover:scale-105 ${
-              currentStep === stepsList.length-1
+            className={`px-6 py-2 rounded-md transition-all duration-200 transform hover:scale-105 ${currentStep === stepsList.length - 1
                 ? 'hidden'
                 : 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm'
-            }`}
+              }`}
           >
             {currentStep === stepsList.length - 1 ? 'Finish' : 'Next'}
           </button>
