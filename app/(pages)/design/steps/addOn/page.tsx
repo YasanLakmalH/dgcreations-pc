@@ -26,8 +26,8 @@ const addOns = [{
   description: 'Integrated dining solution for compact spaces',
 },
 {
-  id: 'ovenarea',
-  name: 'Oven Area',
+  id: 'ovencupboard',
+  name: 'Oven Cupboard',
   description: 'Dedicated space for seamless oven placement',
 },
 {
