@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { motion } from "framer-motion"
 import { GemIcon, Paintbrush, Award } from "lucide-react"
 import DesignBanner from "@/components/designBanner"
+import Testimonials from "@/components/testimonials"
 
 const heroSlides = [
   {
@@ -28,7 +29,7 @@ const heroSlides = [
 const featuredProducts = [
   {
     id: 1,
-    name: "Modern Pantry System",
+    name: "Modern Pantry Cupboard",
     image: "/gallery/pantry3.webp",
     category: "Pantry",
   },
@@ -173,6 +174,9 @@ export default function Home() {
             ))}
           </div>
         </div>
+      </section>
+      <section>
+        <Testimonials/>
       </section>
 
     </div>

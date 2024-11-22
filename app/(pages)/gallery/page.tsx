@@ -41,7 +41,7 @@ const products = [
   },
   {
     id: 6,
-    name: "Bottleneck shelf",
+    name: "Bottle Rack",
     image: "/gallery/bottleneck.webp",
     category: "Other",
   },

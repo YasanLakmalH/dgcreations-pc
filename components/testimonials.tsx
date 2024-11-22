@@ -8,25 +8,29 @@ import { motion, AnimatePresence } from "framer-motion"
 const testimonials = [
   {
     id: 1,
-    name: "Sarah Johnson",
-    role: "Interior Designer",
+    name: "Suboda Ranawaka",
+    role: "Homeowner",
     image: "",
-    content: "The quality and craftsmanship of LuxeCraft's furniture is unmatched. My clients are always impressed with the results.",
+    content: `🤎🤎🤎I wanted to take a moment to express
+            my heartfelt thanks for the incredible work
+            you've done in transforming my home. Your
+            expertise and attention to detail have truly brought a modern, beautiful touch to my old house. 
+            I am beyond thrilled with the results and appreciate all the effort your team put into every aspect of the project. I wanted to thank you for the amazing work
+            you've done on my home. I'm so happy with the results and appreciate all your hardwork ....💐💐💐🤎🤎`,
   },
   {
     id: 2,
-    name: "Michael Chen",
+    name: "Jayamani Rasanthika",
     role: "Homeowner",
     image: "",
-    content: "Their pantry design transformed my kitchen. The attention to detail and functionality is exceptional.",
-  },
-  {
-    id: 3,
-    name: "Emma Davis",
-    role: "Architect",
-    image: "",
-    content: "Working with LuxeCraft has been a pleasure. Their innovative designs and professional service are outstanding.",
-  },
+    content: `The best place to get done your pantry cupboards. 
+              I highly recommend Dimantha at DG creation to anyone who seeks for a reliable and high quality service.
+              The service was top notch and his designs are unique and
+              surprisingly affordable.I wasn't even in sri lanka while he
+              handled my job, yet he delivered the work to my utmost
+              satisfaction`
+  }
+
 ]
 
 export default function Testimonials() {
@@ -72,9 +76,8 @@ export default function Testimonials() {
             {testimonials.map((_, index) => (
               <button
                 key={index}
-                className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                  index === currentIndex ? "bg-primary" : "bg-muted-foreground/30"
-                }`}
+                className={`w-2 h-2 rounded-full transition-colors duration-300 ${index === currentIndex ? "bg-primary" : "bg-muted-foreground/30"
+                  }`}
                 onClick={() => setCurrentIndex(index)}
               />
             ))}
