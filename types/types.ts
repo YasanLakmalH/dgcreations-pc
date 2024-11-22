@@ -25,7 +25,7 @@ export interface Customer {
     email?: string;
     phone?: string;
     address?: string;
-    areaImgs?:File;
+    areaImgs: string;
 }
 
 export type Measurements = {

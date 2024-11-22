@@ -1,3 +1,4 @@
+// Import Firebase Storage and necessary dependencies
 'use client';
 import React, { useState, useEffect } from 'react';
 import { useStore } from '@/store/useStore';
@@ -8,6 +9,8 @@ import { AlertCircle } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useStep } from '@/store/useStore';
 import { BASE_API_URL } from '@/constants/constants';
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { storage } from '@/lib/firestore'; // Adjust path if needed
 
 export default function Page() {
   const { design } = useStore();
@@ -18,13 +21,20 @@ export default function Page() {
   const goToNextStep = useStep((state) => state.goToNextStep);
   const clearDesign = useStore((state) => state.reset);
   const [isSubmitted, setSubmitted] = useState(false);
+  const [isUploading, setUploading] = useState(false);
 
-  const [customerDetails, setCustomerDetailsState] = useState({
+  const [customerDetails, setCustomerDetailsState] = useState<{
+    name: string;
+    email: string;
+    phone: string;
+    address: string;
+    areaImgs: string;
+  }>({
     name: design.customerDetails?.name || '',
     email: design.customerDetails?.email || '',
     phone: design.customerDetails?.phone || '',
     address: design.customerDetails?.address || '',
-    photo: design.customerDetails?.areaImgs || null,
+    areaImgs: design.customerDetails?.areaImgs || '',
   });
 
   useEffect(() => {
@@ -34,7 +44,7 @@ export default function Page() {
         email: design.customerDetails.email || '',
         phone: design.customerDetails.phone || '',
         address: design.customerDetails.address || '',
-        photo: design.customerDetails.areaImgs || null,
+        areaImgs: design.customerDetails.areaImgs || '',
       });
     }
   }, [design.customerDetails]);
@@ -47,24 +57,35 @@ export default function Page() {
     }));
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files ? e.target.files[0] : null;
-  
+    
     if (selectedFile && selectedFile.type.startsWith('image/')) {
-      setCustomerDetailsState((prev) => ({
-        ...prev,
-        photo: selectedFile,
-      }));
+      setUploading(true); // Set uploading state
+      try {
+        const storageRef = ref(storage, `images/${selectedFile.name}`);
+        await uploadBytes(storageRef, selectedFile);
+        
+        // Get the download URL
+        const downloadURL = await getDownloadURL(storageRef);
+        setCustomerDetailsState((prev) => ({
+          ...prev,
+          areaImgs: downloadURL,
+        }));
+      } catch (error) {
+        console.error('Error uploading image:', error);
+      } finally {
+        setUploading(false);
+      }
     } else {
       alert('Please select an image file.');
     }
   };
-  
 
   const submitOrder = async (details: Design) => {
     try {
-
-      const response = await axios.post(`${BASE_API_URL}/api/order`, details);  
+      const response = await axios.post(`${BASE_API_URL}/api/order`, details);
+      console.log('data:', response.data);
       return response.data["orderId"];
     } catch (error) {
       console.error('Error posting design details:', error);
@@ -73,7 +94,7 @@ export default function Page() {
   
   const validateForm = () => {
     const errors: { [key: string]: string } = {};
-
+    
     if (!customerDetails.name.trim()) errors.name = 'Full Name is required';
     if (customerDetails.email && !/\S+@\S+\.\S+/.test(customerDetails.email)) errors.email = 'Email is invalid';
     if (!customerDetails.phone.trim()) {
@@ -82,36 +103,37 @@ export default function Page() {
       errors.phone = 'Phone number must be 10 digits';
     }
     if (!customerDetails.address.trim()) errors.address = 'Address is required';
-    if (!customerDetails.photo) errors.photo = 'Photo is required';
+    if (!customerDetails.areaImgs) errors.areaImgs = 'Photo is required';
 
     setErrors(errors);
     return Object.keys(errors).length === 0;
   };
 
-  const handleSubmit = async() => {
+  const handleSubmit = async () => {
     setSubmitted(true);
 
-    if(!BASE_API_URL){
-      return null;
-    }
+    if (!BASE_API_URL) return;
+
     const isValid = validateForm();
-    if (!isValid){
+    if (!isValid) {
       setSubmitted(false);
       return;
-    } 
+    }
 
     setCustomerDetails(customerDetails);
-    const id= await submitOrder({
+    const id = await submitOrder({
       ...design,
       customerDetails: customerDetails,
     });
+    
     await sendOrderEmailFromClient({
       orderId: id,
-      fromName: customerDetails.name ?? 'Unknown', // Fallback to 'Unknown' if no name
+      fromName: customerDetails.name ?? 'Unknown',
       customerName: customerDetails.name ?? 'Unknown',
       customerPhone: customerDetails.phone ?? 'No phone number',
     });
-    clearDesign(); 
+    
+    clearDesign();
     goToNextStep(currentStep);
     router.push('/design/steps/finalize');
   };
@@ -184,35 +206,25 @@ export default function Page() {
               <ul className="ml-5 list-disc list-inside text-red-600 font-light">
                 <li>Ensure the entire area where the cupboard will be installed is visible in the photo.</li>
                 <li>Include nearby walls, ceilings, and floors for better context.</li>
-                <li>Avoid clutter; clear the area before taking the photo.</li>
-                <li>Use good lighting to capture details accurately.</li>
-                <li>Take the photo from multiple angles if needed for clarity.</li>
+                <li>Use the highest quality possible.</li>
               </ul>
             </div>
-            <div className="flex items-center">
-              <label className="block text-md font-bold text-gray-700 mb-1 w-1/4 text-center">Upload Photo:</label>
-              <input
-                type="file"
-                name="photo"
-                accept="image/*" 
-                onChange={handleFileChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-              />
-            </div>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              disabled={isUploading}
+              className="file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+            />
           </div>
         </div>
       </div>
-
-      {customerDetails.photo && (
-        <div className="mt-4">
-          <p className="text-sm font-medium text-gray-700">Selected File: {customerDetails.photo.name}</p>
-        </div>
-      )}
-
+      
       <button
         onClick={handleSubmit}
-        disabled={isSubmitted}
-        className="mt-6 px-4 py-2 text-white rounded-md bg-green-500 w-full hover:shadow-md">
+        disabled={isSubmitted || isUploading}
+        className="mt-6 px-4 py-2 text-white rounded-md bg-green-500 w-full hover:shadow-md"
+      >
         {isSubmitted ? 'Submitting....' : 'Submit'}
       </button>
     </div>
