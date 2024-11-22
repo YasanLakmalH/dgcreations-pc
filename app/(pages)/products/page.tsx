@@ -18,7 +18,7 @@ const products = [
   {
     id: 1,
     name: "Bottle Rack",
-    category: "Kitchen Room",
+    category: "Kitchen",
     image: "/Products/BottleRack/1.webp",
     description: 'Stylish and space-saving storage for your bottles',
 
