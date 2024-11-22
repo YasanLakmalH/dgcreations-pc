@@ -9,7 +9,7 @@ export default function Page() {
   const resetStep = useStep((state) => state.reset);
 
   useEffect(() => {
-    if(design){
+    if (design) {
       clearDesign();
       resetStep();
     }
@@ -25,54 +25,50 @@ export default function Page() {
 
   return (
 
-        <div className='grid gird-rows-1 col-span-2 px-10 '>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Width (inches)
-            </label>
-            <input
-              type="number"
-              name="width"
-              value={design.measurements.width}
-              onChange={handleChange}
-              min={0}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-              placeholder="Enter width"
-            />
-          </div>
+    <div className='grid gird-rows-1 col-span-2 px-10 '>
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          Width (inches)
+        </label>
+        <input
+          type="number"
+          name="width"
+          value={design.measurements.width}
+          onChange={handleChange}
+          min={0}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+          placeholder="Enter width"
+        />
+      </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Height (inches)
-            </label>
-            <input
-              type="number"
-              name="height"
-              value={design.measurements.height}
-              onChange={handleChange}
-              min={0}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-              placeholder="Enter height"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Depth (inches)
-            </label>
-            <input
-              type="number"
-              name="depth"
-              value={design.measurements.depth}
-              onChange={handleChange}
-              min={0}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-              placeholder="Enter depth"
-            />
-          </div>
-        </div>
-  
-
-
-    
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          Height (inches)
+        </label>
+        <input
+          type="number"
+          name="height"
+          value={design.measurements.height}
+          onChange={handleChange}
+          min={0}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+          placeholder="Enter height"
+        />
+      </div>
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          Depth (inches)
+        </label>
+        <input
+          type="number"
+          name="depth"
+          value={design.measurements.depth}
+          onChange={handleChange}
+          min={0}
+          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+          placeholder="Enter depth"
+        />
+      </div>
+    </div>
   );
 }

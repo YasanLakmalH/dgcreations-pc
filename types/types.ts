@@ -19,12 +19,12 @@ export type OrderEmail ={
     customerName: string,
     customerPhone: string,
 }
+
 export interface Customer {
     name?: string;
     email?: string;
     phone?: string;
     address?: string;
-    location?: string;
     areaImgs?:File;
 }
 
@@ -33,10 +33,7 @@ export type Measurements = {
     height: number;
     depth: number;
 }
-export type Product = {
-    id: string;
-    name: string;
-}
+
 export type Design = {
     measurements: Measurements;
     layout: string;
@@ -65,10 +62,22 @@ export interface StepState {
     goToPreviousStep: (currentStep: number) => void;
     reset: () => void;
 }
-
 export type OrderType = {
     orderId: string;
     design: Design;
     createdAt: string;
   }
   
+export type Product = {
+    name: string;
+    email: string;
+    phone: string;
+    address: string;
+    productName: string;
+  }
+
+export type ProductOrder = {
+    orderId: string;
+    product:Product
+    createdAt: string;
+}

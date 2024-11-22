@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { useRouter } from "next/navigation";
 import {
   Select,
   SelectContent,
@@ -14,7 +15,7 @@ import {
 } from "@/components/ui/select";
 
 const products = [
-  { 
+  {
     id: 1,
     name: "Bottle Rack",
     category: "Kitchen Room",
@@ -38,7 +39,7 @@ const products = [
   },
   {
     id: 4,
-    name: "Refrigerator Cabinet", 
+    name: "Refrigerator Cabinet",
     category: "Kitchen",
     image: "/Products/RefrigeratorCup/11.webp",
     description: "designed integrate a refrigerator seamlessly into a kitchen",
@@ -79,7 +80,7 @@ const sortOptions = ["Name: A to Z", "Name: Z to A"];
 export default function Page() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [sortBy, setSortBy] = useState(sortOptions[0]);
-
+  const router = useRouter();
   const filteredProducts = products
     .filter(
       (product) =>
@@ -163,10 +164,17 @@ export default function Page() {
                     <p className="text-sm text-muted-foreground mb-4">{product.description}</p>
                   </div>
                 </CardContent>
+                <button
+          className="bg-black text-white p-2 shadow w-full"
+          onClick={() => router.push(`/products/order?id=${product.id}`)}
+        >
+          Order Now
+        </button>
               </Card>
             </motion.div>
           ))}
         </div>
+
       </div>
     </div>
   );

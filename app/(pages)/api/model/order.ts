@@ -1,10 +1,14 @@
-import {OrderType} from '@/types/types';
+import {OrderType, ProductOrder} from '@/types/types';
 import { db } from '@/lib/firestore';
 import { collection, addDoc } from 'firebase/firestore';
 import { getDocs } from 'firebase/firestore';
 
 export const createOrder = async (newOrder: OrderType)=> {
     const ordersCollection = collection(db, 'orders');
+    await addDoc(ordersCollection, newOrder);
+};
+export const createProductOrder = async (newOrder: ProductOrder)=> {
+    const ordersCollection = collection(db, 'productOrders');
     await addDoc(ordersCollection, newOrder);
 };
 

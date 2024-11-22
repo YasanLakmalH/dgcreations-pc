@@ -83,8 +83,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   };
 
   const handleNext = () => {
-    if (validateStep() && currentStep < stepsList.length) {
-      goToNextStep(currentStep);
+    if (validateStep() && currentStep <= stepsList.length) {
+      goToNextStep(currentStep); 
       router.push(stepsList[currentStep].path);
     }
   };
@@ -132,13 +132,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </button>
           <button
             onClick={handleNext}
-            disabled={currentStep === stepsList.length}
-            className={`px-6 py-2 rounded-md transition-all duration-200 transform hover:scale-105 ${currentStep === stepsList.length - 1
+            disabled={currentStep === stepsList.length + 1}
+            className={`px-6 py-2 rounded-md transition-all duration-200 transform hover:scale-105 ${currentStep === stepsList.length+1
                 ? 'hidden'
                 : 'bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm'
               }`}
           >
-            {currentStep === stepsList.length - 1 ? 'Finish' : 'Next'}
+            {currentStep === stepsList.length ? 'Finish' : 'Next'}
           </button>
         </div>
       </div>

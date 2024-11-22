@@ -17,17 +17,17 @@ const Footer = () => {
             <h4 className="text-sm font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/gallery" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/gallery" className="text-sm text-muted-foreground hover:text-white transition-colors">
                   Gallery
                 </Link>
               </li>
               <li>
-                <Link href="/design" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/design" className="text-sm text-muted-foreground hover:text-white transition-colors">
                   Pantry Designs
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/about" className="text-sm text-muted-foreground hover:text-white transition-colors">
                   About Us
                 </Link>
               </li>
@@ -38,7 +38,7 @@ const Footer = () => {
             <h4 className="text-sm font-semibold mb-4">Customer Service</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/contact" className="text-sm text-muted-foreground hover:text-white transition-colors">
                   Contact Us
                 </Link>
               </li>
@@ -49,7 +49,7 @@ const Footer = () => {
           <div>
             <h4 className="text-sm font-semibold mb-4">Connect With Us</h4>
             <div className="flex space-x-4">
-              <Link href="https://web.facebook.com/profile.php?id=61550670151521" className="text-muted-foreground hover:text-primary transition-colors">
+              <Link href="https://web.facebook.com/profile.php?id=61550670151521" className="text-muted-foreground hover:text-white transition-colors">
                 <Facebook className="h-5 w-5" />
               </Link>
             </div>
@@ -57,7 +57,7 @@ const Footer = () => {
         </div>
         
         <div className="mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} DG Creations All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} DG Creations All rights reserved | <a href="https://4innovative.software"> Designed and Developed by 4Innovative</a></p>
         </div>
       </div>
     </footer>
