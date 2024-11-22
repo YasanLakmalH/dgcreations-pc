@@ -9,7 +9,7 @@ import { Product } from '@/types/types';
 import axios from 'axios';
 import { sendOrderEmailFromClient } from '@/mailService';
 import { AlertCircle } from 'lucide-react';
-
+import { Suspense } from 'react';
 const products = [
   {
     id: 1,
@@ -69,7 +69,7 @@ const products = [
   },
 ];
 
-export default function Page() {
+function ProductOrder() {
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -247,4 +247,12 @@ export default function Page() {
       </div>
     </div>
   );
+}
+
+export function Page() {
+  return (
+    <Suspense>
+      <ProductOrder />
+    </Suspense>
+  )
 }
