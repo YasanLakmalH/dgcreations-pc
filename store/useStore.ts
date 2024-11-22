@@ -21,7 +21,7 @@ export const useStore = create<DesignState>()(
             email: '',
             phone: '',
             location: '',
-            areaImgs: undefined
+            areaImgs: ""
           }       
         
       },
@@ -92,7 +92,7 @@ export const useStore = create<DesignState>()(
           name: '',
           email: '',
           phone: '',
-          areaImgs: undefined
+          areaImgs: ""
         }
       }
     }),

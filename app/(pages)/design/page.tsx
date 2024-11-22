@@ -1,11 +1,11 @@
-
 export default function Page() {
     return (
-        <div className="h-screen mt-10 flex justify-center items-center overflow-hidden">
+        <div className="h-screen mt-10 flex justify-center items-center overflow-hidden relative">
             {/* Animated Background Pattern */}
-            <div className=" inset-0 bg-grid-white/[0.05] animate-[pulse_4s_ease-in-out_infinite]" />
+            <div className="absolute inset-0 bg-grid-white/[0.05] animate-[pulse_4s_ease-in-out_infinite]" />
+            
             {/* Floating Elements */}
-            <div>
+            <div className="absolute inset-0">
                 {[...Array(20)].map((_, i) => (
                     <div
                         key={i}
@@ -21,14 +21,21 @@ export default function Page() {
                     />
                 ))}
             </div>
-            <div className="p-8 text-center w-full py-72 z-10">
-                <h1 className="text-4xl font-bold mb-4 text-black">Transform Your Space with Personalized Designs!</h1>
-                <p className="text-black mb-6"> Explore endless design possibilities and craft a pantry that&apos;s uniquely yours—let&apos;s get started!
-                    .</p>
-                <a href="design/steps/measurements"><button className="bg-blue-600 text-white px-6 py-3 rounded-md">Customize</button></a>
+
+            {/* Content Section */}
+            <div className="relative z-10 p-4 sm:p-8 text-center w-full py-16 sm:py-24 md:py-32">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-black">
+                    Transform Your Space with Personalized Designs!
+                </h1>
+                <p className="text-black mb-6 text-base sm:text-lg">
+                    Explore endless design possibilities and craft a pantry that&apos;s uniquely yours—let&apos;s get started!
+                </p>
+                <a href="design/steps/measurements">
+                    <button className="bg-blue-600 text-white px-6 py-3 rounded-md text-base sm:text-lg">
+                        Customize
+                    </button>
+                </a>
             </div>
         </div>
-
     );
-};
-
+}
