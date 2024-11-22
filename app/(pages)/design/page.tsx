@@ -1,12 +1,11 @@
 
 export default function Page() {
     return (
-        <div className="h-screen mt-10 flex justify-center items-center">
+        <div className="h-screen mt-10 flex justify-center items-center overflow-hidden">
             {/* Animated Background Pattern */}
-            <div className=" inset-0 bg-grid-white/[0.05] bg-[size:60px_60px] animate-[pulse_4s_ease-in-out_infinite]" />
-
+            <div className=" inset-0 bg-grid-white/[0.05] animate-[pulse_4s_ease-in-out_infinite]" />
             {/* Floating Elements */}
-            <div className="inset-0 overflow-hidden">
+            <div>
                 {[...Array(20)].map((_, i) => (
                     <div
                         key={i}
