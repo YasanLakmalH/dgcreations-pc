@@ -10,6 +10,7 @@ import axios from 'axios';
 import { sendOrderEmailFromClient } from '@/mailService';
 import { AlertCircle } from 'lucide-react';
 import { Suspense } from 'react';
+
 const products = [
   {
     id: 1,
@@ -17,6 +18,7 @@ const products = [
     category: "Kitchen Room",
     image: "/Products/BottleRack/1.webp",
     description: 'Stylish and space-saving storage for your bottles',
+
   },
   {
     id: 2,
@@ -91,7 +93,7 @@ function ProductOrder() {
       ...productOrder,
       [name]: value,
     });
-  }
+  };
 
   const submitOrder = async (productOrder: Product) => {
     try {
@@ -156,7 +158,7 @@ function ProductOrder() {
 
       <div className="container mx-auto py-10 px-4 sm:px-6 md:px-8 lg:px-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-        <div className="flex justify-center">
+          <div className="flex justify-center">
             <motion.div
               key={product?.name}
               initial={{ opacity: 0, y: 20 }}
@@ -199,7 +201,7 @@ function ProductOrder() {
                 name="name"
                 onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                placeholder="Jhone doe"
+                placeholder="John Doe"
               />
             </div>
 
@@ -241,18 +243,16 @@ function ProductOrder() {
               {isSubmitted ? 'Submitting....' : 'Submit'}
             </button>
           </div>
-
-
         </div>
       </div>
     </div>
   );
 }
 
-export function Page() {
+export default function Page() {
   return (
-    <Suspense>
+    <Suspense fallback={<div>Loading...</div>}>
       <ProductOrder />
     </Suspense>
-  )
+  );
 }
