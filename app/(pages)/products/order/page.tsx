@@ -133,7 +133,7 @@ export default function Page() {
       customerName: productOrder.name ?? 'Unknown',
       customerPhone: productOrder.phone ?? 'No phone number',
     });
-    router.push('products/order/completed');
+    router.push('/products/order/completed');
   };
 
   return (

@@ -1,5 +1,4 @@
 'use client';
-import { LayoutGrid } from 'lucide-react';
 import { useStore } from '@/store/useStore';
 
 const layouts = [
@@ -23,6 +22,7 @@ const layouts = [
     image: '/layout/both.webp'
   }
 ];
+
 export default function Page() {
   const { design } = useStore();
   const setLayout = useStore((state) => state.setLayout);

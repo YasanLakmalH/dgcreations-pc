@@ -139,7 +139,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               }`}
           >
             {currentStep === stepsList.length ? 'Finish' : 'Next'}
-            `${currentStep}`
           </button>
         </div>
       </div>
