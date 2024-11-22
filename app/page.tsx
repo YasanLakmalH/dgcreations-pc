@@ -1,12 +1,12 @@
-"use client"
-import Image from "next/image"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { motion } from "framer-motion"
-import { GemIcon, Paintbrush, Award } from "lucide-react"
-import DesignBanner from "@/components/designBanner"
-import Testimonials from "@/components/testimonials"
+"use client";
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { motion } from "framer-motion";
+import { GemIcon, Paintbrush, Award } from "lucide-react";
+import DesignBanner from "@/components/designBanner";
+import Testimonials from "@/components/testimonials";
 
 const heroSlides = [
   {
@@ -24,7 +24,7 @@ const heroSlides = [
     title: "Luxury Design",
     description: "Elevate your space with our signature collections",
   },
-]
+];
 
 const featuredProducts = [
   {
@@ -45,18 +45,16 @@ const featuredProducts = [
     image: "/gallery/setyback.webp",
     category: "Furniture",
   },
-]
+];
 
 export default function Home() {
-
-
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
       <section className="relative h-screen">
         <div className="overflow-hidden h-full">
           <div className="flex h-full">
-            <div className="relative h-full flex-[0_0_100%]">
+            <div className="relative h-full w-full">
               <Image
                 src={heroSlides[2].image}
                 alt={heroSlides[2].title}
@@ -64,13 +62,13 @@ export default function Home() {
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-black/40" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center text-white space-y-4 p-4">
+              <div className="absolute inset-0 flex items-center justify-center p-4">
+                <div className="text-center text-white space-y-4">
                   <motion.h1
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    className="text-4xl md:text-6xl font-bold"
+                    className="text-3xl md:text-5xl lg:text-6xl font-bold"
                   >
                     {heroSlides[2].title}
                   </motion.h1>
@@ -78,7 +76,7 @@ export default function Home() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="text-lg md:text-xl"
+                    className="text-md md:text-lg lg:text-xl"
                   >
                     {heroSlides[2].description}
                   </motion.p>
@@ -99,12 +97,14 @@ export default function Home() {
           </div>
         </div>
       </section>
-    <DesignBanner />
+
+      <DesignBanner />
+
       {/* Featured Products */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-12 md:py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Featured Products</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">Featured Products</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
             {featuredProducts.map((product) => (
               <motion.div
                 key={product.id}
@@ -114,22 +114,22 @@ export default function Home() {
                 viewport={{ once: true }}
               >
                 <a href="/products">
-                <Card className="overflow-hidden group">
-                  <CardContent className="p-0">
-                    <div className="relative h-64">
-                      <Image
-                        src={product.image}
-                        alt={product.name}
-                        fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
-                      />
-                    </div>
-                    <div className="p-4">
-                      <h3 className="text-lg font-semibold">{product.name}</h3>
-                      <p className="text-muted-foreground">{product.category}</p>
-                    </div>
-                  </CardContent>
-                </Card>
+                  <Card className="overflow-hidden group">
+                    <CardContent className="p-0">
+                      <div className="relative h-48 md:h-64">
+                        <Image
+                          src={product.image}
+                          alt={product.name}
+                          fill
+                          className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                      </div>
+                      <div className="p-4">
+                        <h3 className="text-md md:text-lg font-semibold">{product.name}</h3>
+                        <p className="text-sm md:text-base text-muted-foreground">{product.category}</p>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </a>
               </motion.div>
             ))}
@@ -138,10 +138,10 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16">
+      <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Why Choose Us</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12">Why Choose Us</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
             {[
               {
                 title: "Premium Quality",
@@ -156,7 +156,7 @@ export default function Home() {
               {
                 title: "Expert Installation",
                 description: "Professional installation by our skilled craftsmen",
-                icon: <Award/>,
+                icon: <Award />,
               },
             ].map((feature, index) => (
               <motion.div
@@ -165,20 +165,18 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                className="text-center p-6 rounded-lg transition-colors duration-300 shadow-lg bg-stone-200"
+                className="text-center p-4 sm:p-6 rounded-lg shadow-lg bg-stone-200"
               >
-                <span className="flex justify-center py-3">{feature.icon}</span>
-                <h3 className="text-xl font-semibold mb-4">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
+                <span className="flex justify-center py-3 text-4xl text-primary">{feature.icon}</span>
+                <h3 className="text-lg md:text-xl font-semibold mb-4">{feature.title}</h3>
+                <p className="text-sm md:text-base text-muted-foreground">{feature.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
-      <section>
-        <Testimonials/>
-      </section>
 
+      <Testimonials />
     </div>
-  )
+  );
 }

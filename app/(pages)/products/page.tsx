@@ -42,14 +42,14 @@ const products = [
     name: "Refrigerator Cabinet",
     category: "Kitchen",
     image: "/Products/RefrigeratorCup/11.webp",
-    description: "designed integrate a refrigerator seamlessly into a kitchen",
+    description: "Designed integrate a refrigerator seamlessly into a kitchen",
   },
   {
     id: 5,
     name: "Sety Back",
     category: "Living Room",
     image: "/Products/SetyBack/15.webp",
-    description: "decorative or functional wall-mounted panel",
+    description: "Decorative or functional wall-mounted panel",
   },
   {
     id: 6,
@@ -63,14 +63,14 @@ const products = [
     name: "Storage Compartment",
     category: "Office",
     image: "/Products/StorageCompartments/13.webp",
-    description: "organize and store items",
+    description: "An organized space specifically designed to store various items.",
   },
   {
     id: 8,
     name: "TV Wall Panel",
     category: "Living Room",
     image: "/Products/TVWallPanel/4.webp",
-    description: "stylish and functional designed to mount and display a television",
+    description: "Stylish and functional designed to mount and display a television",
   },
 ];
 
@@ -165,11 +165,11 @@ export default function Page() {
                   </div>
                 </CardContent>
                 <button
-          className="bg-black text-white p-2 shadow w-full"
-          onClick={() => router.push(`/products/order?id=${product.id}`)}
-        >
-          Order Now
-        </button>
+                  className="bg-black text-white p-2 shadow w-full"
+                  onClick={() => router.push(`/products/order?id=${product.id}`)}
+                >
+                  Order Now
+                </button>
               </Card>
             </motion.div>
           ))}
