@@ -57,7 +57,7 @@ const Footer = () => {
         </div>
         
         <div className="mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} DG Creations All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} DG Creations All rights reserved | <a href="https://4innovative.software"> Designed and Developed by 4Innovative</a></p>
         </div>
       </div>
     </footer>

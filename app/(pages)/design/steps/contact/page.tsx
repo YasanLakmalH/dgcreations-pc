@@ -89,18 +89,22 @@ export default function Page() {
   };
 
   const handleSubmit = async() => {
+    setSubmitted(true);
+
     if(!BASE_API_URL){
       return null;
     }
     const isValid = validateForm();
-    if (!isValid) return;
+    if (!isValid){
+      setSubmitted(false);
+      return;
+    } 
 
     setCustomerDetails(customerDetails);
     const id= await submitOrder({
       ...design,
       customerDetails: customerDetails,
     });
-    setSubmitted(true);
     await sendOrderEmailFromClient({
       orderId: id,
       fromName: customerDetails.name ?? 'Unknown', // Fallback to 'Unknown' if no name

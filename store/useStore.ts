@@ -92,7 +92,6 @@ export const useStore = create<DesignState>()(
           name: '',
           email: '',
           phone: '',
-          location: '',
           areaImgs: undefined
         }
       }
@@ -115,3 +114,4 @@ export const useStep = create<StepState>()(
     { name: 'step-storage' }
   )
 );
+

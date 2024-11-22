@@ -1,5 +1,5 @@
 'use client';
- 
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -8,7 +8,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { sendEmailFromClient } from '@/mailService';
- 
+
 export default function Contact() {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
@@ -17,7 +17,7 @@ export default function Contact() {
     subject: '',
     message: '',
   });
- 
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
@@ -27,9 +27,9 @@ export default function Contact() {
     sendEmailFromClient(formData);
     setFormData({ name: '', email: '', subject: '', message: '' });
   };
- 
+
   return (
-    
+
     <div className="min-h-screen pt-16">
       {/* Contact Header */}
       <section className=" py-16 bg-black text-white">
@@ -47,7 +47,7 @@ export default function Contact() {
           </motion.div>
         </div>
       </section>
- 
+
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -65,14 +65,12 @@ export default function Contact() {
                   <div>
                     <h3 className="font-semibold">Visit Us</h3>
                     <p className="text-muted-foreground">
-                      1162/6A,
+                      597/1/5,
                       <br />
-                      Malabe Road,
+                      Jayanthi Road,
                       <br />
-                      Kottawa,
+                      Athurugiriya,
                       <br />
-                      Pannipitiya,
-                      <br />  
                       Sri Lanka
                     </p>
                   </div>
@@ -90,6 +88,8 @@ export default function Contact() {
                   <div>
                     <h3 className="font-semibold">Email Us</h3>
                     <p className="text-muted-foreground">dgcreationslk@gmail.com</p>
+                    <p className="text-muted-foreground">gimeshikakumari@gmail.com</p>
+
                   </div>
                 </div>
               </div>
@@ -97,7 +97,7 @@ export default function Contact() {
               <div className="mt-8">
                 <div className="w-full relative" style={{ height: '250px' }}>
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d3961.249510278371!2d79.9641272!3d6.8606716!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNsKwNTEnNDIuOCJOIDc5wrA1Nyc1Mi45IkU!5e0!3m2!1sen!2slk!4v1731743074490!5m2!1sen!2slk"
+                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3631.0750542664264!2d79.9873889!3d6.8698889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNsKwNTInMTEuNiJOIDc5wrA1OScxNC42IkU!5e1!3m2!1sen!2slk!4v1732268795988!5m2!1sen!2slk"
                     width="80%"
                     height="100%"
                     style={{ border: 0 }}
@@ -105,9 +105,11 @@ export default function Contact() {
                     referrerPolicy="no-referrer-when-downgrade"
                   ></iframe>
                 </div>
+
+
               </div>
             </motion.div>
- 
+
             {/* Inquiry Form */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
@@ -173,4 +175,3 @@ export default function Contact() {
     </div>
   );
 }
- 
